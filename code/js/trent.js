@@ -5,7 +5,7 @@ $(document).ready(function() {
     categories = ["Environment", "Games", "Fashion", "Technology", "Sports"];
    
   
-  d3.json("../data/data.json", function(d) {
+  d3.json("../data/data.json", function(error, data) {
     //var data = d.data;
     console.log("YES");
     //console.log(data);
