@@ -3,14 +3,38 @@ $(document).ready(function() {
     width = 960 - margin.left - margin.right
     height = 430 - margin.top - margin.bottom
     categories = ["Environment", "Games", "Fashion", "Technology", "Sports"];
-    
+  
   var x = d3.scale.ordinal()
     .range([0, width])
     .domain(categories);
     
   var y = d3.scale.linear()
-    .range([0, height]);
+    .range([0, height])
+    .domain([0, 100]);
+  
+  var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom");
     
+  var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left");
+    
+  var svg = d3.select("#trent").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+    .attr("transform", "translate(0," + -25 + ")");
+    
+  svg.append("g")
+    .attr("class", "x_axis")
+    .call(xAxis);
+    
+  svg.append("g")
+    .attr("class", "y_axis")
+    .call(yAxis);  
+    
+  
   var selections = ["Funding", "Views"], 
     j = 0;  // Choose "Funding" as default
   console.log("RADIO");
