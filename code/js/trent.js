@@ -14,7 +14,7 @@ $(document).ready(function() {
   
   var xAxis = d3.svg.axis()
     .scale(x)
-    .orient("bottom");
+    .orient("top");
     
   var yAxis = d3.svg.axis()
     .scale(y)
