@@ -28,6 +28,7 @@ $(document).ready(function() {
     
   svg.append("g")
     .attr("class", "x_axis")
+    .attr("transform", "translate(0," + height + ")");
     .call(xAxis);
     
   svg.append("g")
