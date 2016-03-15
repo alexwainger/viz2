@@ -16,23 +16,17 @@ div.xiaoyi_hoverinfo {
 	padding: 10px;
 	border-radius: 5px;
 }
-
+#trent .x_axis path,
 #trent .x_axis line {
 	shape-rendering: crispEdges;
 	stroke: #000;
 }
 
-#trent .x_axis path {
-	display: none;
-}
-
+#trent .y_axis path,
 #trent .y_axis line {
 	shape-rendering: crispEdges;
 	stroke: #000;
 }
 
-#trent .y_axis path {
-	display: none;
-}
 
 
