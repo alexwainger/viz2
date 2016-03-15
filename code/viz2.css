@@ -17,3 +17,8 @@ div.xiaoyi_hoverinfo {
 	border-radius: 5px;
 }
 
+div.trent.x_axis {
+	shape-rendering: crispEdges;
+	stroke: #000;
+}
+
