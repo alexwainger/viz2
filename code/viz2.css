@@ -17,8 +17,12 @@ div.xiaoyi_hoverinfo {
 	border-radius: 5px;
 }
 
-div.trent.x_axis {
+#trent .x_axis line {
 	shape-rendering: crispEdges;
 	stroke: #000;
+}
+
+#trent .axis path {
+	display: none;
 }
 
