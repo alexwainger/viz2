@@ -13,7 +13,7 @@ $(document).ready(function() {
     
   var selections = ["Funding", "Views"], 
     j = 0;  // Choose "Funding" as default
-
+  console.log("RADIO");
   // Create the shape selectors
   var form = d3.select("#trent").append("form");
   
