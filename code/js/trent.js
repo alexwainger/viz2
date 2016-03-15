@@ -7,6 +7,7 @@ $(document).ready(function() {
   
   d3.json("../data/data.json", function(d) {
     var data = d.data;
+    console.log("YES");
     console.log(data);
   });
 });
