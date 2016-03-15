@@ -10,7 +10,7 @@ $(document).ready(function() {
     
   var y = d3.scale.linear()
     .range([0, height])
-    .domain([0, 100]);
+    .domain([100, 0]);
   
   var xAxis = d3.svg.axis()
     .scale(x)
