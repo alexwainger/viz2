@@ -12,22 +12,22 @@ $(document).ready(function() {
     .range([0, height]);
     
   var selections = ["Funding", "Views"], 
-    j = 0;  // Choose the rectangle as default
+    j = 0;  // Choose "Funding" as default
 
-// Create the shape selectors
-var form = d3.select("#trent").append("form");
-
-labels = form.selectAll("label")
+  // Create the shape selectors
+  var form = d3.select("#trent").append("form");
+  console.log("RADIO");
+  labels = form.selectAll("label")
     .data(selections)
     .enter()
     .append("label")
     .text(function(d) {return d;})
     .insert("input")
     .attr({
-        type: "radio",
-        class: "selection",
-        name: "mode",
-        value: function(d, i) {return i;}
+      type: "radio",
+      class: "selection",
+      name: "mode",
+      value: function(d, i) {return i;}
     })
     .property("checked", function(d, i) {return i===j;});
     
