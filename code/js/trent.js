@@ -5,8 +5,8 @@ $(document).ready(function() {
     categories = ["Environment", "Games", "Fashion", "Technology", "Sports"];
    
   
-  d3.json("../data/data.json", function(error, data) {
-    data.forEach(function(d) {
+  d3.json("../data/data.json", function(error, json) {
+    json.forEach(function(d) {
       console.log(d);
     });
   });
