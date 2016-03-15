@@ -5,7 +5,7 @@ $(document).ready(function() {
     categories = ["Environment", "Games", "Fashion", "Technology", "Sports"];
   
   var x = d3.scale.ordinal()
-    .range([width, 0])
+    .rangeBands([width, 0])
     .domain(categories);
     
   var y = d3.scale.linear()
