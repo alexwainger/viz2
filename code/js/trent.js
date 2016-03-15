@@ -4,9 +4,9 @@ $(document).ready(function() {
     height = 430 - margin.top - margin.bottom
     categories = ["Environment", "Games", "Fashion", "Technology", "Sports"];
    
-  d3.json("https://raw.githubusercontent.com/alexwainger/viz2/master/code/data/data.json", function(error, data) {
+  d3.json("https://raw.githubusercontent.com/alexwainger/viz2/master/code/data/data.json", function(error, d) {
     //var data = d.data;
-    console.log(data);
+    console.log(d.data);
     //console.log(data);
   });
 });
