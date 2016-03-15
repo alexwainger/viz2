@@ -4,7 +4,6 @@ $(document).ready(function() {
     height = 430 - margin.top - margin.bottom
     categories = ["Environment", "Games", "Fashion", "Technology", "Sports"];
    
-  console.log("TEST");
   d3.json("../data/data.json", function(error, data) {
     //var data = d.data;
     console.log("YES");
