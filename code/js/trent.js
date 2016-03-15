@@ -24,7 +24,7 @@ $(document).ready(function() {
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
     .append("g")
-    .attr("transform", "translate(0," + -25 + ")");
+    .attr("transform", "translate(" margin.left + "," + margin.top ")");
     
   svg.append("g")
     .attr("class", "x_axis")
