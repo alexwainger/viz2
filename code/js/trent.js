@@ -16,8 +16,8 @@ $(document).ready(function() {
 
   // Create the shape selectors
   var form = d3.select("#trent").append("form");
-  console.log("RADIO");
-  label = form.selectAll("label")
+  
+  labels = form.selectAll("label")
     .data(selections)
     .enter()
     .append("label")
