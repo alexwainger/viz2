@@ -5,8 +5,9 @@ $(document).ready(function() {
     categories = ["Environment", "Games", "Fashion", "Technology", "Sports"];
    
   d3.json("https://raw.githubusercontent.com/alexwainger/viz2/master/code/data/data.json", function(error, d) {
-    //var data = d.data;
-    console.log(d.data);
+    var data = d.data;
+    console.log(data);
+    console.log(data.length);
     //console.log(data);
   });
 });
