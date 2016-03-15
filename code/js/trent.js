@@ -1,1 +1,1 @@
-d3.select("#trent").append("p").text("Bar Graph");
+d3.select.("body").select("#trent").append("p").text("Bar Graph");
