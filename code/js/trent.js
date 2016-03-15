@@ -5,10 +5,9 @@ $(document).ready(function() {
     categories = ["Environment", "Games", "Fashion", "Technology", "Sports"];
    
   
-  d3.json("../data/data.json", function(error, json) {
-    json.forEach(function(d) {
-      console.log(d);
-    });
+  d3.json("../data/data.json", function(d) {
+    var data = d.data;
+    console.log(data);
   });
 });
   
