@@ -344,7 +344,7 @@ $(document).ready(function() {
         .attr("y", function() { return y(m_views[i]) + "px"; })
         .ease("linear");
         console.log(i);
-        console.log(d3.select(this);)});
+        console.log(d3.select(this));)});
     /*transition().duration(1500)
         .attr("height", function(d) { return (height - y(d)) + "px"; })
         .attr("y", function(d) { return y(d) + "px"; })
