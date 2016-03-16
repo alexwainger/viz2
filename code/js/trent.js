@@ -39,7 +39,8 @@ $(document).ready(function() {
     
   var yAxis = d3.svg.axis()
     .scale(y)
-    .orient("left");
+    .orient("left")
+    .tickFormat(function(d) {return "$" + d; });
     
   var svg = d3.select("#trent").append("svg")
     .attr("width", width + margin.left + margin.right)
@@ -244,6 +245,7 @@ $(document).ready(function() {
     y.domain([0, 2762]);
     
     svg.select(".y_axis")
+    .tickFormat(function(d) {return d; })
       .transition().duration(1500).ease("sin-in-out")
       .call(yAxis);
       
@@ -255,6 +257,7 @@ $(document).ready(function() {
     y.domain([0, 77551]);
     
     svg.select(".y_axis")
+      .tickFormat(function(d) {return "$" + d; })
       .transition().duration(1500).ease("sin-in-out")
       .call(yAxis);
       
