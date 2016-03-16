@@ -252,6 +252,13 @@ $(document).ready(function() {
     console.log(m_check);
     console.log(f_check);
     console.log(u_check);
+    var total = m_views.concat(f_views, u_views, m_check, f_check, u_check);
+    var sum = 0;
+    for(var i = 0; i < total.length; i++) {
+      sum = sum + total[i];
+    }
+    console.log("~~~SUM~~~");
+    console.log(sum);
     
   d3.selectAll("input").on("change", change);
  
