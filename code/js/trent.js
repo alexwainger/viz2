@@ -11,7 +11,7 @@ $(document).ready(function() {
     
   var y = d3.scale.linear()
     .range([height, 0])
-    .domain([0, 100]);
+    .domain([0, 10000]);
   
   var xAxis = d3.svg.axis()
     .scale(x)
@@ -77,13 +77,37 @@ $(document).ready(function() {
   function change() {
     var value = this.value;
     if(value == 0) {
+      rescale_funding();
       console.log("Funding");
     }
     
     else {
+      rescale_views();
       console.log("Views");
     }
     
+  }
+  
+  function rescale_views() {
+    y.domain([0, 100]);
+    
+    svg.select(".y_axis")
+      .transition().duration(1500).ease("sin-in-out")
+      .call(yAxis);
+      
+    svg.select(".yaxis_label")
+      .text("Number of Views"");
+  }
+  
+  function rescale_funding() {
+    y.domain([0, 10000]);
+    
+    svg.select(".y_axis")
+      .transition().duration(1500).ease("sin-in-out")
+      .call(yAxis);
+      
+    svg.select(".yaxis_label")
+      .text("Amount of Funding");
   }
   d3.json("https://raw.githubusercontent.com/alexwainger/viz2/master/code/data/data.json", function(error, d) {
     var data = d.data;
