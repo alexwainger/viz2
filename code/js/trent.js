@@ -263,7 +263,7 @@ $(document).ready(function() {
       .text("Amount of Funding (dollars)");
   }
   console.log("CHECKER");
-  console.log(y(5000));
+  console.log(y(77551));
   
  
     
