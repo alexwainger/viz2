@@ -18,12 +18,14 @@ div.xiaoyi_hoverinfo {
 }
 #trent .x_axis path,
 #trent .x_axis line {
+	fill: none;
 	shape-rendering: crispEdges;
 	stroke: #000;
 }
 
 #trent .y_axis path,
 #trent .y_axis line {
+	fill: none;
 	shape-rendering: crispEdges;
 	stroke: #000;
 }
