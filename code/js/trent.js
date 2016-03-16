@@ -376,7 +376,7 @@ $(document).ready(function() {
   
   
     
-  console.log("ADD ME BRO");
+  console.log("ADD ME BRUH");
  
     
     //console.log(data);
