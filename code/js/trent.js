@@ -290,7 +290,7 @@ $(document).ready(function() {
   
   
     
-  console.log("ADD CATEGORIES3");
+  console.log("ADD CATEGORIES4");
  
     
     //console.log(data);
