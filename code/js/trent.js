@@ -39,12 +39,13 @@ $(document).ready(function() {
   svg.append("text")
     .attr("class", "xaxis_label")
     .attr("text-anchor", "middle")
+    .attr("transform", "translate(" + width/2 + "," + height + ")")
     .text("Categories");
     
   svg.append("text")
     .attr("class", "yaxis_label")
     .attr("text-anchor", "middle")
-    .attr("transform", "rotate(-90)")
+    .attr("transform", "translate(0," + height/2 + ")rotate(-90)")
     .text("Amount of Funding");
 
   var selections = ["Funding", "Views"], 
