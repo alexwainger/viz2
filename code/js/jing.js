@@ -1,19 +1,19 @@
 $(document).ready(function () {
     var margin = {
-            top: 50
-            , right: 0
-            , bottom: 70
-            , left: 100
-        }
-        , width = 960 - margin.left - margin.right
-        , height = 320 - margin.top - margin.bottom
-        , gridSize = Math.floor(width / 24)
-        , legendElementWidth = gridSize * 2
-        , buckets = 8
-        , colors = ["#ffffd9", "#edf8b1", "#c7e9b4", "#7fcdbb", "#41b6c4", "#1d91c0", "#225ea8", "#253494"], // alternatively colorbrewer.YlGnBu[9]
-        categories = ['Environment', 'Games', 'Fashion', 'Technology', 'Sports']
-        , times = ["1a", "2a", "3a", "4a", "5a", "6a", "7a", "8a", "9a", "10a", "11a", "12p", "1p", "2p", "3p", "4p", "5p", "6p", "7p", "8p", "9p", "10p", "11p", "12a"]
-        , events = ["View Project", "Fund Project"];
+            top: 50,
+            right: 0,
+            bottom: 70,
+            left: 100
+        },
+        width = 960 - margin.left - margin.right,
+        height = 320 - margin.top - margin.bottom,
+        gridSize = Math.floor(width / 24),
+        legendElementWidth = gridSize * 2,
+        buckets = 8, //        colors = ["#ffe6e6", "#ffb3b3", "#ff9999", "#ff6666", "#ff3333", "#e60000", "#b30000", "#800000"], // alternatively colorbrewer.YlGnBu[9]
+        colors = ['#ffffcc', '#ffeda0', '#fed976', '#feb24c', '#fd8d3c', '#fc4e2a', '#e31a1c', '#b10026'],
+        categories = ['Environment', 'Games', 'Fashion', 'Technology', 'Sports'],
+        times = ["1a", "2a", "3a", "4a", "5a", "6a", "7a", "8a", "9a", "10a", "11a", "12p", "1p", "2p", "3p", "4p", "5p", "6p", "7p", "8p", "9p", "10p", "11p", "12a"],
+        events = ["View Project", "Fund Project"];
 
     // draw svg
     var svg = d3.select("#jing").append("svg")
@@ -55,15 +55,15 @@ $(document).ready(function () {
         });
 
     var heatmap = function (event) {
-        // count view events at each hour for each category
+        // count occurence of selected event at each hour for each category
         var timeCat = {};
         for (var i = 0; i < 24; i++) {
             timeCat[i + 1] = {
-                'Environment': 0
-                , 'Games': 0
-                , 'Fashion': 0
-                , 'Technology': 0
-                , 'Sports': 0
+                'Environment': 0,
+                'Games': 0,
+                'Fashion': 0,
+                'Technology': 0,
+                'Sports': 0
             }
         }
         d3.json("../data/data.json", function (d) {
@@ -81,10 +81,10 @@ $(document).ready(function () {
                 for (var j = 0; j < categories.length; j++) {
                     var cat = categories[j];
                     dict.push({
-                        category: cat
-                        , hour: i
-                        , value: +timeCat[i][cat]
-                        , catNum: j
+                        category: cat,
+                        hour: i,
+                        value: +timeCat[i][cat],
+                        catNum: j
                     });
                 }
             }
@@ -104,8 +104,10 @@ $(document).ready(function () {
                 .data(dict, function (d) {
                     return d.category + ':' + d.hour;
                 });
-
-            cards.append("title");
+            
+            var domain = colorScale.domain();
+            var gap = (domain[1] - domain[0]) / buckets;
+            var cutoff = domain[0] + gap * (buckets - 4);
 
             cards.enter().append("rect")
                 .attr("x", function (d) {
@@ -119,16 +121,38 @@ $(document).ready(function () {
                 .attr("class", "hour bordered")
                 .attr("width", gridSize)
                 .attr("height", gridSize)
-                .style("fill", colors[0]);
+                .style("fill", colors[0])
+                .on("mouseover", function (d) {
+                    d3.select(this)
+                        .style("stroke", "white")
+                        .attr("stroke-width", 3)
+                    this.parentNode.appendChild(this);
+                    var x = parseFloat(d3.select(this).attr("x")) + gridSize / 2;
+                    var y = parseFloat(d3.select(this).attr("y")) + gridSize / 2;
+                    svg.append("text")
+                        .attr("id", "tooltip")
+                        .attr("x", x)
+                        .attr("y", y)
+                        .style("fill", function () {
+                            return (d.value >= cutoff) ? "white" : "black";
+                        })
+                        .attr("text-anchor", "middle")
+                        .attr("font-family", "sans-serif")
+                        .attr("font-size", "12px")
+                        .attr("font-weight", "bold")
+                        .text(d.value);
+                })
+                .on("mouseout", function () {
+                    d3.select("#tooltip").remove();
+                    d3.select(this)
+                        .style("stroke-width", "2px")
+                        .style("stroke", "#E6E6E6");
+                });
 
             cards.transition().duration(1000)
                 .style("fill", function (d) {
                     return colorScale(d.value);
                 });
-
-            cards.select("title").text(function (d) {
-                return d.value;
-            });
 
             cards.exit().remove();
 
@@ -169,6 +193,8 @@ $(document).ready(function () {
                 .attr("y", height + gridSize);
 
             legend.exit().remove();
+
+
         });
     }
 
