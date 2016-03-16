@@ -337,7 +337,7 @@ $(document).ready(function() {
   }
   
   function transition() {
-    svg.selectAll(".male").each(function(d) { console.log(d); });
+    svg.selectAll(".male").each(function(d, i) { console.log(i); });
     /*transition().duration(1500)
         .attr("height", function(d) { return (height - y(d)) + "px"; })
         .attr("y", function(d) { return y(d) + "px"; })
@@ -382,7 +382,7 @@ $(document).ready(function() {
   
   
     
-  console.log("ADD ME BRUH!!");
+  console.log("ADD ME BRUH!!!");
  
     
     //console.log(data);
