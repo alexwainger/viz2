@@ -283,7 +283,7 @@ $(document).ready(function() {
   
   
     
-  console.log("ADD CATEGORIES");
+  console.log("ADD CATEGORIES1");
  
     
     //console.log(data);
