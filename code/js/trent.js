@@ -115,14 +115,14 @@ $(document).ready(function() {
     if (error) throw error;
     var data = d.data;
     console.log(data.category);
-    /*var m_funding = [0, 0, 0, 0, 0];
+    var m_funding = [0, 0, 0, 0, 0];
     var f_funding = [0, 0, 0, 0, 0];
     var m_views = [0, 0, 0, 0, 0];
     var f_views = [0, 0, 0, 0, 0];
     data.forEach(function(d) {
-      var category;
+      console.log(d.category);
       
-    });*/
+    });
     console.log(data);
     console.log(data.length);
     
