@@ -62,7 +62,7 @@ $(document).ready(function() {
   svg.append("text")
     .attr("class", "xaxis_label")
     .attr("text-anchor", "middle")
-    .attr("transform", "translate(" + width/2 + "," + (height+80) + ")")
+    .attr("transform", "translate(" + width/2 + "," + (height+50) + ")")
     .text("Categories");
     
   svg.append("text")
