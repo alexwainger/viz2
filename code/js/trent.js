@@ -231,7 +231,7 @@ $(document).ready(function() {
  
   function change() {
     var value = this.value;
-    apply_bars(value);
+    
     if(value == 0) {
       rescale_funding();
       //console.log("Funding");
@@ -241,7 +241,7 @@ $(document).ready(function() {
       rescale_views();
       //console.log("Views");
     }
-    
+    apply_bars(value);
   }
   
   function rescale_views() {
