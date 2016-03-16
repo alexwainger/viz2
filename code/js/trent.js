@@ -42,28 +42,9 @@ $(document).ready(function() {
   console.log("RADIOS");
   // Create the shape selectors
   var form = d3.select("#trent").append("form");
-  form.append("label")
-    .text(selections[0])
-    .insert("input")
-    .attr({
-      type: "radio",
-      id: "selection",
-      name: "mode",
-      value: selections[0]
-    })
-    .property("checked");
-    
-  form.append("label")
-    .text(selections[1])
-    .insert("input")
-    .attr({
-      type: "radio",
-      id: "selection",
-      name: "mode",
-      value: selections[1]
-    });
+ 
   
-  /*labels = form.selectAll("label")
+  labels = form.selectAll("label")
     .data(selections)
     .enter()
     .append("label")
@@ -75,7 +56,7 @@ $(document).ready(function() {
       name: "mode",
       value: function(d, i) {return i;}
     })
-    .property("checked", function(d, i) {return i===j;});*/
+    .property("checked", function(d, i) {return i===j;});
   
   
   //console.log(choice);
