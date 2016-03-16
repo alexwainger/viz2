@@ -262,6 +262,8 @@ $(document).ready(function() {
     svg.select(".yaxis_label")
       .text("Amount of Funding");
   }
+  
+  console.log(y(m_funding));
     
     //console.log(data);
   });
