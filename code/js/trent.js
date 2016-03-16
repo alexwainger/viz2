@@ -362,7 +362,7 @@ $(document).ready(function() {
       svg.append("rect")
         .attr("width", "18px")
         .attr("height", function() { return (height - y(m[i])) + "px"; })
-        .attr("x", x(categories[i]))
+        .attr("x", x(categories[i]) + 18)
         .attr("y", function() { return y(m[i]) + "px"; })
         .style("fill", function() { return color_bucket[0]; })
         .attr("class", "male");
@@ -372,7 +372,7 @@ $(document).ready(function() {
       svg.append("rect")
         .attr("width", "18px")
         .attr("height", function() { return (height - y(f[i])) + "px"; })
-        .attr("x", x(categories[i]) + 18)
+        .attr("x", x(categories[i]) + 36)
         .attr("y", function() { return y(f[i]) + "px"; })
         .style("fill", function() { return color_bucket[1]; })
         .attr("class", "female");
@@ -382,7 +382,7 @@ $(document).ready(function() {
       svg.append("rect")
         .attr("width", "18px")
         .attr("height", function() { return (height - y(u[i])) + "px"; })
-        .attr("x", x(categories[i]) + 36)
+        .attr("x", x(categories[i]) + 64)
         .attr("y", function() { return y(u[i]) + "px"; })
         .style("fill", function() { return color_bucket[2]; })
         .attr("class", "unspecified")
@@ -428,7 +428,7 @@ $(document).ready(function() {
     });
   }
   apply_bars(0);
-  console.log("ADD ME BRAJ!!!");
+  console.log("ADD ME!");
   });
 });
   
