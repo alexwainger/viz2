@@ -31,7 +31,7 @@ $(document).ready(function() {
     
   var y = d3.scale.linear()
     .range([height, 0])
-    .domain([0, 10000]);
+    .domain([0, 77551]);
   
   var xAxis = d3.svg.axis()
     .scale(x)
@@ -73,43 +73,7 @@ $(document).ready(function() {
   
   //console.log(choice);
   
-  d3.selectAll("input").on("change", change);
- 
-  function change() {
-    var value = this.value;
-    if(value == 0) {
-      rescale_funding();
-      //console.log("Funding");
-    }
-    
-    else {
-      rescale_views();
-      //console.log("Views");
-    }
-    
-  }
   
-  function rescale_views() {
-    y.domain([0, 100]);
-    
-    svg.select(".y_axis")
-      .transition().duration(1500).ease("sin-in-out")
-      .call(yAxis);
-      
-    svg.select(".yaxis_label")
-      .text("Number of Views");
-  }
-  
-  function rescale_funding() {
-    y.domain([0, 10000]);
-    
-    svg.select(".y_axis")
-      .transition().duration(1500).ease("sin-in-out")
-      .call(yAxis);
-      
-    svg.select(".yaxis_label")
-      .text("Amount of Funding");
-  }
   
   var m_funding = [0, 0, 0, 0, 0];
   var f_funding = [0, 0, 0, 0, 0];
@@ -259,6 +223,44 @@ $(document).ready(function() {
     console.log(m_views);
     console.log(f_views);
     console.log(u_views);
+    
+    d3.selectAll("input").on("change", change);
+ 
+  function change() {
+    var value = this.value;
+    if(value == 0) {
+      rescale_funding();
+      //console.log("Funding");
+    }
+    
+    else {
+      rescale_views();
+      //console.log("Views");
+    }
+    
+  }
+  
+  function rescale_views() {
+    y.domain([0, 2762]);
+    
+    svg.select(".y_axis")
+      .transition().duration(1500).ease("sin-in-out")
+      .call(yAxis);
+      
+    svg.select(".yaxis_label")
+      .text("Number of Views");
+  }
+  
+  function rescale_funding() {
+    y.domain([0, 77551]);
+    
+    svg.select(".y_axis")
+      .transition().duration(1500).ease("sin-in-out")
+      .call(yAxis);
+      
+    svg.select(".yaxis_label")
+      .text("Amount of Funding");
+  }
     
     //console.log(data);
   });
