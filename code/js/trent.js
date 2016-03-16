@@ -272,13 +272,6 @@ $(document).ready(function() {
     .enter().append("g")
     .attr("class", "category")
     .attr("transform", function(d) { return "translate(" + x(d) + ",0)";});
-    /*
-      .append("rect")
-      .attr("width", 18)
-      .attr("x", 0)
-      .attr("y", 0)
-      .attr("height", y(5000))
-      .style("fill", function(d) { return color_bucket[0]; });*/
     
   /*state.append("rect")
     .attr("width", 18)
