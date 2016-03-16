@@ -335,7 +335,7 @@ $(document).ready(function() {
         .attr("class", "unspecified");
     }
   }
-  
+  console.log("YO");
   function transition() {
     svg.selectAll(".male").each(function(d, i) { 
       d.transition()
