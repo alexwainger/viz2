@@ -245,9 +245,9 @@ $(document).ready(function() {
       rescale_views();
       svg.select(".male")
         .transition()
-        .attr("height", function() { return (height - y(1750)) + "px"; })
-        .attr("x", x(categories[0]))
-        .attr("y", function() { return y(1750) + "px"; })
+        .duration(1500)
+        .attr("height", function() { return (height - y(2650)) + "px"; })
+        .attr("y", function() { return y(2650) + "px"; })
         .ease("linear");
       //console.log("Views");
     }
@@ -256,11 +256,11 @@ $(document).ready(function() {
   
   function rescale_views() {
     y.domain([2500, 3000]);
+    yAxis.scale(y);
    
     svg.select(".y_axis")
       .transition().duration(1500).ease("sin-in-out");
-      //.call(yAxis);
-    yAxis.scale(y);
+    
     svg.select(".yaxis_label")
       .text("Number of Views");
       
@@ -268,18 +268,15 @@ $(document).ready(function() {
   
   function rescale_funding() {
     y.domain([70000, 80000]);
-    
+    yAxis.scale(y);
     svg.select(".y_axis")
       .transition().duration(1500).ease("sin-in-out");
-      //.call(yAxis);
-      
-    yAxis.scale(y);
+
+    
     
     svg.select(".yaxis_label")
       .text("Amount of Funding (dollars)");
   }
-  console.log("CHECKER1");
-  console.log(y(77551));
   
   /*var state = svg.selectAll(".category")
     .data(categories)
@@ -376,7 +373,7 @@ $(document).ready(function() {
   
   
     
-  console.log("ADD ME!!!");
+  console.log("ADD ME BRO");
  
     
     //console.log(data);
