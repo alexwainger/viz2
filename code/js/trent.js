@@ -272,7 +272,7 @@ $(document).ready(function() {
     .enter().append("g")
     .attr("class", "category")
     .attr("transform", function(d) { return "translate(" + x(d) + ",0)";});
-  
+  console.log(state);
   state.selectAll("rect")
       .data(m_funding)
       .enter().append("rect")
