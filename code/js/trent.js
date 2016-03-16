@@ -343,7 +343,8 @@ $(document).ready(function() {
         .attr("height", function() { return (height - y(m_views[i])) + "px"; })
         .attr("y", function() { return y(m_views[i]) + "px"; })
         .ease("linear");
-        console.log(i); });
+        console.log(i);
+        console.log(d3.select(this);)});
     /*transition().duration(1500)
         .attr("height", function(d) { return (height - y(d)) + "px"; })
         .attr("y", function(d) { return y(d) + "px"; })
@@ -372,7 +373,7 @@ $(document).ready(function() {
     .attr("x", 0)
     .attr("y", function(d, i) { return y(d[i]) + "px"; })
     .style("fill", function(d) { return color_bucket[0]; });*/
-  console.log("ADD ME BRAH!");
+  console.log("ADD ME BRAH!1");
   });
 });
   
