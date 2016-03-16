@@ -295,7 +295,7 @@ $(document).ready(function() {
   
   for(var i = 0; i < 5; i++) {
     var current = svg.selectAll(".category");
-    console.log(current[i]);
+    console.log(current[0][i]);
   }
     
 
