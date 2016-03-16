@@ -34,9 +34,19 @@ $(document).ready(function() {
     
   svg.append("g")
     .attr("class", "y_axis")
-    .call(yAxis);  
+    .call(yAxis); 
     
-  
+  svg.append("text")
+    .attr("class", "xaxis_label")
+    .attr("text-anchor", "middle")
+    .text("Categories");
+    
+  svg.append("text")
+    .attr("class", "yaxis_label")
+    .attr("text-anchor", "middle")
+    .attr("transform", "rotate(-90)")
+    .text("Amount of Funding");
+
   var selections = ["Funding", "Views"], 
     j = 0;  // Choose "Funding" as default
   console.log("RADIOS");
