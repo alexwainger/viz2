@@ -239,9 +239,15 @@ $(document).ready(function() {
     
     else {
       rescale_views();
+      svg.select(".male")
+        .transition()
+        .attr("height", function() { return (height - y(1750)) + "px"; })
+        .attr("x", x(categories[0]))
+        .attr("y", function() { return y(1750) + "px"; })
+        .ease("linear");
       //console.log("Views");
     }
-    apply_bars(value);
+    
   }
   
   function rescale_views() {
