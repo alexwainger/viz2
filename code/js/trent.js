@@ -274,7 +274,7 @@ $(document).ready(function() {
     .attr("transform", function(d) { return "translate(" + x(d) + ",0)";});
   //console.log(state[0][0]);
   var first = state[0][0];
-  first.append("rect")
+  svg.append("rect")
     .attr("width", 18)
     .attr("x", 0)
     .attr("y", 0)
