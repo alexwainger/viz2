@@ -52,8 +52,8 @@ $(document).ready(function() {
     j = 0;  // Choose "Funding" as default
   console.log("RADIOS");
   // Create the shape selectors
-  var form = d3.select("#trent").append("form");
- 
+  //var form = d3.select("#trent").append("form");
+ var form = svg.append("form");
   
   labels = form.selectAll("label")
     .data(selections)
