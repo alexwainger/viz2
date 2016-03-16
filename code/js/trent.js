@@ -102,9 +102,10 @@ $(document).ready(function() {
       var category_index = -1;
       
       if(d.category === "Environment") {
-        entries = entries + 1;
+        
         category_index = 0;
         if(d.event_name === "Fund Project"){
+          entries = entries + 1;
           if(d.gender === "M") {
             m_funding[category_index] = m_funding[category_index] + d.amount;
             m_check[category_index] = m_check[category_index] + 1;
@@ -133,9 +134,9 @@ $(document).ready(function() {
       }
       
       else if(d.category === "Games") {
-        entries = entries + 1;
         category_index = 1;
         if(d.event_name === "Fund Project"){
+          entries = entries + 1;
           if(d.gender === "M") {
             m_funding[category_index] = m_funding[category_index] + d.amount;
             m_check[category_index] = m_check[category_index] + 1;
@@ -163,9 +164,9 @@ $(document).ready(function() {
         }
       }
       else if(d.category === "Fashion") {
-        entries = entries + 1;
         category_index = 2;
         if(d.event_name === "Fund Project"){
+          entries = entries + 1;
           if(d.gender === "M") {
             m_funding[category_index] = m_funding[category_index] + d.amount;
             m_check[category_index] = m_check[category_index] + 1;
@@ -193,9 +194,10 @@ $(document).ready(function() {
         }
       }
       else if(d.category === "Technology") {
-        entries = entries + 1;
+        
         category_index = 3;
         if(d.event_name === "Fund Project"){
+          entries = entries + 1;
           if(d.gender === "M") {
             m_funding[category_index] = m_funding[category_index] + d.amount;
             m_check[category_index] = m_check[category_index] + 1;
@@ -270,7 +272,7 @@ $(document).ready(function() {
     for(var i = 0; i < total.length; i++) {
       sum = sum + total[i];
     }
-    console.log("~~~SUM~~~");
+    console.log("~~~SUM!~~~");
     console.log(sum);
     console.log("~~~CHECK~~~");
     console.log(entries);
