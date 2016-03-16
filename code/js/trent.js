@@ -282,11 +282,10 @@ $(document).ready(function() {
     .style("fill", function(d) { return color_bucket[0]; });
     
   for(var i = 0; i < 5; i++) {
-    console.log("ADD RECT");
     svg.append("rect")
       .attr("width", "18px")
       .attr("height", function() { return (height - y(m_funding[i])) + "px"; })
-      .attr("x", 0)
+      .attr("x", x(categories[i]))
       .attr("y", function() { return y(m_funding[i]) + "px"; })
       .style("fill", function() { return color_bucket[0]; });
   }
@@ -328,7 +327,7 @@ $(document).ready(function() {
   
   
     
-  console.log("ADD ME PLEASE!!");
+  console.log("ADD ME PLEASE!!!");
  
     
     //console.log(data);
