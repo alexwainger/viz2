@@ -267,13 +267,12 @@ $(document).ready(function() {
   console.log("CHECKER1");
   console.log(y(77551));
   
-  var state = svg.selectAll(".category")
+  /*var state = svg.selectAll(".category")
     .data(categories)
     .enter().append("g")
     .attr("class", "category")
-    .attr("transform", function(d) { return "translate(" + x(d) + ",0)";});
-  //console.log(state[0][0]);
-  var first = state[0][0];
+    .attr("transform", function(d) { return "translate(" + x(d) + ",0)";});*/
+ 
   svg.append("rect")
     .attr("width", 18)
     .attr("x", 0)
@@ -289,6 +288,7 @@ $(document).ready(function() {
       .attr("y", function() { return y(m_funding[i]) + "px"; })
       .style("fill", function() { return color_bucket[0]; });
   }
+  
   for(var i = 0; i < 5; i++) {
     svg.append("rect")
       .attr("width", "18px")
@@ -296,6 +296,15 @@ $(document).ready(function() {
       .attr("x", x(categories[i]) + 18)
       .attr("y", function() { return y(f_funding[i]) + "px"; })
       .style("fill", function() { return color_bucket[1]; });
+  }
+  
+  for(var i = 0; i < 5; i++) {
+    svg.append("rect")
+      .attr("width", "18px")
+      .attr("height", function() { return (height - y(u_funding[i])) + "px"; })
+      .attr("x", x(categories[i]) + 36)
+      .attr("y", function() { return y(u_funding[i]) + "px"; })
+      .style("fill", function() { return color_bucket[2]; });
   }
   /*state.selectAll("rect")
       .data(m_funding)
