@@ -372,15 +372,7 @@ $(document).ready(function() {
     .attr("x", 0)
     .attr("y", function(d, i) { return y(d[i]) + "px"; })
     .style("fill", function(d) { return color_bucket[0]; });*/
-    
-
-  
-  
-    
-  console.log("ADD ME BRAH");
- 
-    
-    //console.log(data);
+  console.log("ADD ME BRAH!");
   });
 });
   
