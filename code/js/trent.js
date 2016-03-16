@@ -307,7 +307,7 @@ $(document).ready(function() {
   
   
     
-  console.log("ADD ME!");
+  console.log("ADD ME PLEASE");
  
     
     //console.log(data);
