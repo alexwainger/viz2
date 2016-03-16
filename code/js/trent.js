@@ -281,9 +281,9 @@ $(document).ready(function() {
     .style("fill", function(d) { return color_bucket[0]; });*/
   state.append("rect")
     .attr("width", "18px")
-    .attr("height", function() { return (height - y(m_funding[0])) + "px"; })
+    .attr("height", function(i) { return (height - y(m_funding[i])) + "px"; })
     .attr("x", 0)
-    .attr("y", function(d) { return y(m_funding[0]) + "px"; })
+    .attr("y", function(i) { return y(m_funding[i]) + "px"; })
     .style("fill", function(d) { return color_bucket[0]; });
     
 
