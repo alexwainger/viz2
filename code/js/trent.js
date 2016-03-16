@@ -287,7 +287,7 @@ $(document).ready(function() {
     .style("fill", function(d) { return color_bucket[0]; });*/
   svg.selectAll(".category").data(m_funding).enter().append("rect")
     .attr("width", "18px")
-    .attr("height", function(d) { return (height - y(d) + "px"; })
+    .attr("height", function(d) { return (height - y(d)) + "px"; })
     .attr("x", 0)
     .attr("y", function(d) { return y(d) + "px"; })
     .style("fill", function(d) { return color_bucket[0]; });
