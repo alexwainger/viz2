@@ -279,12 +279,11 @@ $(document).ready(function() {
     .attr("y", 0)
     .attr("height", y(5000))
     .style("fill", function(d) { return color_bucket[0]; });*/
-  svg.select(".category")
-    .data(m_funding).enter().append("rect")
+  state.append("rect")
     .attr("width", "18px")
-    .attr("height", function(d) { return (height - y(d)) + "px"; })
+    .attr("height", function() { return (height - y(m_funding[0])) + "px"; })
     .attr("x", 0)
-    .attr("y", function(d) { return y(d) + "px"; })
+    .attr("y", function(d) { return y(m_funding[0]) + "px"; })
     .style("fill", function(d) { return color_bucket[0]; });
     
 
