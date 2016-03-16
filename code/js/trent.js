@@ -272,6 +272,14 @@ $(document).ready(function() {
     .enter().append("g")
     .attr("class", "category")
     .attr("transform", function(d) { return "translate(" + x(d) + ",0)";});
+  state.selectAll("rect")
+    .data(m_funding)
+    .enter.append("rect")
+    .attr("width", x0.rangeBand())
+    .attr("x", function(d) { return x0(d);})
+    .attr("y", function(d) { return y(d); })
+    .attr("height", function(d) { return height - y(d); })
+    .style("fill", function(d) { return color_bucket[0]; });
 
   
   
