@@ -245,9 +245,9 @@ $(document).ready(function() {
     y.domain([0, 2762]);
     
     svg.select(".y_axis")
-    .tickFormat(function(d) {return d; })
       .transition().duration(1500).ease("sin-in-out")
-      .call(yAxis);
+      .call(yAxis)
+      .tickFormat(function(d) {return d; });
       
     svg.select(".yaxis_label")
       .text("Number of Views");
@@ -257,9 +257,9 @@ $(document).ready(function() {
     y.domain([0, 77551]);
     
     svg.select(".y_axis")
-      .tickFormat(function(d) {return "$" + d; })
       .transition().duration(1500).ease("sin-in-out")
-      .call(yAxis);
+      .call(yAxis)
+      .tickFormat(function(d) {return "$" + d; });
       
     svg.select(".yaxis_label")
       .text("Amount of Funding");
