@@ -337,7 +337,7 @@ $(document).ready(function() {
   }
   
   function transition() {
-    svg.selectAll(".male").each(function(d) { console.log(d); };
+    svg.selectAll(".male").each(function(d) { console.log(d); });
     /*transition().duration(1500)
         .attr("height", function(d) { return (height - y(d)) + "px"; })
         .attr("y", function(d) { return y(d) + "px"; })
