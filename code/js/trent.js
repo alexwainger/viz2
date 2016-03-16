@@ -262,7 +262,7 @@ $(document).ready(function() {
     svg.select(".yaxis_label")
       .text("Amount of Funding (dollars)");
   }
-  console.log(y(m_funding));
+  console.log(y(5000));
  
     
     //console.log(data);
