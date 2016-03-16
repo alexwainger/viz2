@@ -53,6 +53,16 @@ $(document).ready(function() {
     })
     .property("checked");
   
+  form.append("label")
+    .text(selections[1])
+    .insert("input")
+    .attr({
+      type: "radio",
+      id: "selection",
+      name: "mode",
+      value: selections[1]
+    });
+  
   /*labels = form.selectAll("label")
     .data(selections)
     .enter()
@@ -73,14 +83,7 @@ $(document).ready(function() {
   d3.selectAll("input").on("change", change);
  
   function change() {
-    var choice = d3.select('input[name="mode"]:checked').property("value");
-    if(choice == 0) {
-      console.log("Funds");
-    }
-    
-    else {
-      console.log("Views");
-    }
+    console.log(this.value);
   }
   d3.json("https://raw.githubusercontent.com/alexwainger/viz2/master/code/data/data.json", function(error, d) {
     var data = d.data;
