@@ -386,8 +386,8 @@ $(document).ready(function() {
         .attr("y", function() { return y(u[i]) + "px"; })
         .style("fill", function() { return color_bucket[2]; })
         .attr("class", "unspecified")
-        .append("svg:title")
-        .text("Unspecified: " + u[i]);
+        .append("title")
+        .text("Unspecified");
     }
   }
   
