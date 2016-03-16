@@ -273,12 +273,13 @@ $(document).ready(function() {
     .attr("class", "category")
     .attr("transform", function(d) { return "translate(" + x(d) + ",0)";});*/
  
-  svg.append("rect")
+  /*svg.append("rect")
     .attr("width", 18)
     .attr("x", 0)
     .attr("y", 0)
     .attr("height", y(5000))
-    .style("fill", function(d) { return color_bucket[0]; });
+    .style("fill", function(d) { return color_bucket[0]; });*/
+    
   function apply_bars(check) {  
     
     if(check == 0) {
@@ -361,7 +362,7 @@ $(document).ready(function() {
   
   
     
-  console.log("ADD ME PLEASE!!!");
+  console.log("ADD ME PLEASE!!!!");
  
     
     //console.log(data);
