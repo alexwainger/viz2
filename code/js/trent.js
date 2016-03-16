@@ -259,7 +259,8 @@ $(document).ready(function() {
     yAxis.scale(y);
    
     svg.select(".y_axis")
-      .transition().duration(1500).ease("sin-in-out");
+      .transition().duration(1500).ease("sin-in-out")
+      .call(yAxis);
     
     svg.select(".yaxis_label")
       .text("Number of Views");
@@ -270,7 +271,8 @@ $(document).ready(function() {
     y.domain([70000, 80000]);
     yAxis.scale(y);
     svg.select(".y_axis")
-      .transition().duration(1500).ease("sin-in-out");
+      .transition().duration(1500).ease("sin-in-out")
+      .call(yAxis);;
 
     
     
@@ -331,7 +333,8 @@ $(document).ready(function() {
         .attr("x", x(categories[i]) + 36)
         .attr("y", function() { return y(u[i]) + "px"; })
         .style("fill", function() { return color_bucket[2]; })
-        .attr("class", "unspecified");
+        .attr("class", "unspecified")
+        .transition().duration(500);
     }
   }
   apply_bars(0);
