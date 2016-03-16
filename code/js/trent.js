@@ -110,8 +110,19 @@ $(document).ready(function() {
     svg.select(".yaxis_label")
       .text("Amount of Funding");
   }
+  
   d3.json("https://raw.githubusercontent.com/alexwainger/viz2/master/code/data/data.json", function(error, d) {
+    if (error) throw error;
     var data = d.data;
+    console.log(data.category);
+    /*var m_funding = [0, 0, 0, 0, 0];
+    var f_funding = [0, 0, 0, 0, 0];
+    var m_views = [0, 0, 0, 0, 0];
+    var f_views = [0, 0, 0, 0, 0];
+    data.forEach(function(d) {
+      var category;
+      
+    });*/
     console.log(data);
     console.log(data.length);
     
