@@ -32,6 +32,8 @@ $(document).ready(function() {
   var y = d3.scale.linear()
     .range([height, 0])
     .domain([0, 77551]);
+    
+  var x0 = d3.scale.ordinal();
   
   var xAxis = d3.svg.axis()
     .scale(x)
@@ -271,6 +273,9 @@ $(document).ready(function() {
     .attr("class", "category")
     .attr("transform", function(d) { return "translate(" + x(d) + ",0)";})
     .attr("width", "36px");
+
+  
+  
     
   console.log("ADD CATEGORIES");
  
