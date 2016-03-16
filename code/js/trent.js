@@ -298,7 +298,8 @@ $(document).ready(function() {
         .attr("height", function() { return (height - y(m[i])) + "px"; })
         .attr("x", x(categories[i]))
         .attr("y", function() { return y(m[i]) + "px"; })
-        .style("fill", function() { return color_bucket[0]; });
+        .style("fill", function() { return color_bucket[0]; })
+        .attr("class", "male");
     }
   
     for(var i = 0; i < 5; i++) {
@@ -307,7 +308,8 @@ $(document).ready(function() {
         .attr("height", function() { return (height - y(f[i])) + "px"; })
         .attr("x", x(categories[i]) + 18)
         .attr("y", function() { return y(f[i]) + "px"; })
-        .style("fill", function() { return color_bucket[1]; });
+        .style("fill", function() { return color_bucket[1]; })
+        .attr("class", "female");
     }
   
     for(var i = 0; i < 5; i++) {
@@ -316,7 +318,8 @@ $(document).ready(function() {
         .attr("height", function() { return (height - y(u[i])) + "px"; })
         .attr("x", x(categories[i]) + 36)
         .attr("y", function() { return y(u[i]) + "px"; })
-        .style("fill", function() { return color_bucket[2]; });
+        .style("fill", function() { return color_bucket[2]; })
+        .attr("class", "unspecified");
     }
   }
   apply_bars(0);
