@@ -64,7 +64,15 @@ $(document).ready(function() {
   d3.selectAll("input").on("change", change);
  
   function change() {
-    console.log(this.value);
+    var value = this.value;
+    if(value == 0) {
+      console.log("Funding");
+    }
+    
+    else {
+      console.log("Views");
+    }
+    
   }
   d3.json("https://raw.githubusercontent.com/alexwainger/viz2/master/code/data/data.json", function(error, d) {
     var data = d.data;
