@@ -30,8 +30,8 @@ $(document).ready(function() {
     .domain(categories);
     
   var y = d3.scale.linear()
-    .range([height, 0])
-    .domain([70000, 80000]);
+    .range([height, 0]);
+    //.domain([70000, 80000]);
     
   var x0 = d3.scale.ordinal();
   
@@ -42,6 +42,10 @@ $(document).ready(function() {
   var yAxis = d3.svg.axis()
     .scale(y)
     .orient("left");
+  
+  y.domain([70000, 80000]);
+  yAxis.scale(y);
+  
     //.tickFormat(function(d) {return "$" + d; });
     
   var svg = d3.select("#trent").append("svg")
@@ -227,7 +231,7 @@ $(document).ready(function() {
     console.log(f_views);
     console.log(u_views);
     
-    d3.selectAll("input").on("change", change);
+  d3.selectAll("input").on("change", change);
  
   function change() {
     var value = this.value;
@@ -252,11 +256,11 @@ $(document).ready(function() {
   
   function rescale_views() {
     y.domain([2500, 3000]);
-    
+   
     svg.select(".y_axis")
       .transition().duration(1500).ease("sin-in-out")
       .call(yAxis);
-      
+    yAxis.scale(y);
     svg.select(".yaxis_label")
       .text("Number of Views");
       
@@ -269,6 +273,8 @@ $(document).ready(function() {
       .transition().duration(1500).ease("sin-in-out")
       .call(yAxis);
       
+    yAxis.scale(y);
+    
     svg.select(".yaxis_label")
       .text("Amount of Funding (dollars)");
   }
