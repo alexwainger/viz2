@@ -51,9 +51,8 @@ $(document).ready(function() {
       name: "mode",
       value: selections[0]
     })
-    .property("checked");
-  
-  form.append("label")
+    .property("checked")
+    .append("label")
     .text(selections[1])
     .insert("input")
     .attr({
