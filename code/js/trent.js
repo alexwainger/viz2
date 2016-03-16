@@ -296,7 +296,7 @@ $(document).ready(function() {
   
   
     
-  console.log("ADD CATEGORIES2");
+  console.log("ADD ME");
  
     
     //console.log(data);
