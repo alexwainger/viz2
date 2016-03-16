@@ -96,7 +96,7 @@ $(document).ready(function() {
       .call(yAxis);
       
     svg.select(".yaxis_label")
-      .text("Number of Views"");
+      .text("Number of Views");
   }
   
   function rescale_funding() {
