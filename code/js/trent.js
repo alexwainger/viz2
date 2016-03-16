@@ -273,7 +273,8 @@ $(document).ready(function() {
     .attr("class", "category")
     .attr("transform", function(d) { return "translate(" + x(d) + ",0)";});
   //console.log(state[0][0]);
-  state[0][0].append("rect")
+  var first = state[0][0];
+  first.append("rect")
     .attr("width", 18)
     .attr("x", 0)
     .attr("y", 0)
