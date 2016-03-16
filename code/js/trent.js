@@ -279,18 +279,18 @@ $(document).ready(function() {
     .attr("y", 0)
     .attr("height", y(5000))
     .style("fill", function(d) { return color_bucket[0]; });*/
-  state.append("rect")
+  state.selectAll("rect").data(m_funding).enter().append("rect")
     .attr("width", "18px")
-    .attr("height", function(i) { return (height - y(m_funding[i])) + "px"; })
+    .attr("height", function(d, i) { return (height - y(d[i])) + "px"; })
     .attr("x", 0)
-    .attr("y", function(i) { return y(m_funding[i]) + "px"; })
+    .attr("y", function(d, i) { return y(d[i]) + "px"; })
     .style("fill", function(d) { return color_bucket[0]; });
     
 
   
   
     
-  console.log("ADD CATEGORIES4");
+  console.log("ADD CATEGORIES5");
  
     
     //console.log(data);
