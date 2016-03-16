@@ -53,7 +53,7 @@ $(document).ready(function() {
   console.log("RADIOS");
   // Create the shape selectors
  var form = d3.select("#trent").append("form")
-  .attr("id", "toggle");
+  .attr("class", "toggle");
  //var form = svg.append("form");
   
   labels = form.selectAll("label")
