@@ -79,12 +79,12 @@ $(document).ready(function() {
     var value = this.value;
     if(value == 0) {
       rescale_funding();
-      console.log("Funding");
+      //console.log("Funding");
     }
     
     else {
       rescale_views();
-      console.log("Views");
+      //console.log("Views");
     }
     
   }
