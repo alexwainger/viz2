@@ -272,6 +272,16 @@ $(document).ready(function() {
     .enter().append("g")
     .attr("class", "category")
     .attr("transform", function(d) { return "translate(" + x(d) + ",0)";});
+  
+  state.select("rect")
+      .data(m_funding)
+      .enter().append("rect")
+      .attr("width", "18px")
+      .attr("height", function(d) { return (height - y(d)) + "px"; })
+      .attr("x", 0)
+      .attr("y", function(d) { return y(d) + "px"; })
+      .style("fill", function() { return color_bucket[0]; });
+      
     
   /*state.append("rect")
     .attr("width", 18)
@@ -287,7 +297,7 @@ $(document).ready(function() {
     .style("fill", function(d) { return color_bucket[0]; });*/
     
   
-  for(var i = 0; i < 5; i++) {
+  /*for(var i = 0; i < 5; i++) {
     var current = svg.selectAll(".category");
     current[0][i].append("rect").attr("width", "18px")
       .attr("height", function() { return (height - y(m_funding[i])) + "px"; })
@@ -295,13 +305,13 @@ $(document).ready(function() {
       .attr("y", function() { return y(m_funding[i]) + "px"; })
       .style("fill", function() { return color_bucket[0]; });
     //console.log(current[0][i]);
-  }
+  }*/
     
 
   
   
     
-  console.log("ADD ME PLEASE");
+  console.log("ADD ME PLEASE!");
  
     
     //console.log(data);
