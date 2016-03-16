@@ -16,6 +16,26 @@ div.xiaoyi_hoverinfo {
     padding: 10px;
     border-radius: 5px;
 }
+#trent .x_axis path,
+#trent .x_axis line {
+	fill: none;
+	shape-rendering: crispEdges;
+	stroke: #000;
+}
+
+#trent .y_axis path,
+#trent .y_axis line {
+	fill: none;
+	shape-rendering: crispEdges;
+	stroke: #000;
+}
+
+#trent .toggle {
+	padding-left: 455px;
+	padding-top: 20px;
+}
+
+
 
 rect.bordered {
     stroke: #E6E6E6;
