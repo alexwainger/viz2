@@ -66,7 +66,7 @@ $(document).ready(function() {
   svg.append("text")
     .attr("class", "yaxis_label")
     .attr("text-anchor", "middle")
-    .attr("transform", "translate(-55," + height/2 + ")rotate(-90)")
+    .attr("transform", "translate(-65," + height/2 + ")rotate(-90)")
     .text("Amount of Funding (dollars)");
 
   
