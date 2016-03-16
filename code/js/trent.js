@@ -258,8 +258,8 @@ $(document).ready(function() {
     y.domain([2500, 3000]);
    
     svg.select(".y_axis")
-      .transition().duration(1500).ease("sin-in-out")
-      .call(yAxis);
+      .transition().duration(1500).ease("sin-in-out");
+      //.call(yAxis);
     yAxis.scale(y);
     svg.select(".yaxis_label")
       .text("Number of Views");
@@ -270,8 +270,8 @@ $(document).ready(function() {
     y.domain([70000, 80000]);
     
     svg.select(".y_axis")
-      .transition().duration(1500).ease("sin-in-out")
-      .call(yAxis);
+      .transition().duration(1500).ease("sin-in-out");
+      //.call(yAxis);
       
     yAxis.scale(y);
     
@@ -376,7 +376,7 @@ $(document).ready(function() {
   
   
     
-  console.log("ADD ME!!");
+  console.log("ADD ME!!!");
  
     
     //console.log(data);
