@@ -129,7 +129,7 @@ $(document).ready(function() {
         category_index = 0;
         if(d.event_type === "Fund Project"){
           if(d.gender === "M") {
-            m_funding[category_index] = m_funding[category_index] + d.amount;
+            m_funding[category_index] = m_funding[category_index] + int(d.amount);
           }
           else if(d.gender === "F") {
             f_funding[category_index] = f_funding[category_index] + d.amount;
