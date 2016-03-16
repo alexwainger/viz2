@@ -345,6 +345,7 @@ $(document).ready(function() {
     .attr("height", y(5000))
     .style("fill", function(d) { return color_bucket[0]; });*/
     
+    
   function apply_bars(check) {  
     
     if(check == 0) {
