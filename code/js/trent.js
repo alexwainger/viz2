@@ -128,8 +128,9 @@ $(document).ready(function() {
       if(d.category === "Environment") {
         category_index = 0;
         if(d.event_type === "Fund Project"){
+          console.log("FUND ENVIRONMENT");
           if(d.gender === "M") {
-            m_funding[category_index] = m_funding[category_index] + int(d.amount);
+            m_funding[category_index] = m_funding[category_index] + d.amount;
           }
           else if(d.gender === "F") {
             f_funding[category_index] = f_funding[category_index] + d.amount;
