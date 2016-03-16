@@ -56,14 +56,15 @@ $(document).ready(function() {
       value: function(d, i) {return i;}
     })
     .property("checked", function(d, i) {return i===j;});
-    
-  //var choice = d3.select('input[name="mode"]:checked').property("value");
+  
+  
   //console.log(choice);
   
   d3.selectAll("input").on("change", change);
-  
+ 
   function change() {
-    if(this.value === 0) {
+    var choice = d3.select('input[name="mode"]:checked').property("value");
+    if(choice == 0) {
       console.log("Funds");
     }
     
