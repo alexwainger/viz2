@@ -271,7 +271,13 @@ $(document).ready(function() {
     .data(categories)
     .enter().append("g")
     .attr("class", "category")
-    .attr("transform", function(d) { return "translate(" + x(d) + ",0)";});
+    .attr("transform", function(d) { return "translate(" + x(d) + ",0)";})
+      .append("rect")
+      .attr("width", "18px")
+      .attr("height", function(d, i) { return (height - y(d[i])) + "px"; })
+      .attr("x", 0)
+      .attr("y", function(d, i) { return y(d[i]) + "px"; })
+      .style("fill", function(d) { return color_bucket[0]; });;
     
   /*state.append("rect")
     .attr("width", 18)
