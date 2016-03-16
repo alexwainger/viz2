@@ -274,10 +274,10 @@ $(document).ready(function() {
     .attr("transform", function(d) { return "translate(" + x(d) + ",0)";});
     
   state.append("rect")
-    .attr("width", x0.rangeBand())
-    .attr("x", function(d) { return x0(d);})
-    .attr("y", function(d) { return y(d); })
-    .attr("height", function(d) { return height - y(d); })
+    .attr("width", 18)
+    .attr("x", 0)
+    .attr("y", 0)
+    .attr("height", 5000)
     .style("fill", function(d) { return color_bucket[0]; });
 
   
