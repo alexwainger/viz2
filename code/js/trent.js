@@ -428,7 +428,7 @@ $(document).ready(function() {
     });
   }
   apply_bars(0);
-  console.log("ADD ME BRAJ!");
+  console.log("ADD ME BRAJ!!");
   });
 });
   
