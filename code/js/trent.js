@@ -127,7 +127,7 @@ $(document).ready(function() {
       
       if(d.category === "Environment") {
         category_index = 0;
-        if(d.event_type === "Fund Project"){
+        if(d.event_name === "Fund Project"){
           if(d.gender === "M") {
             m_funding[category_index] = m_funding[category_index] + d.amount;
           }
@@ -153,7 +153,7 @@ $(document).ready(function() {
       
       else if(d.category === "Games") {
         category_index = 1;
-        if(d.event_type === "Fund Project"){
+        if(d.event_name === "Fund Project"){
           if(d.gender === "M") {
             m_funding[category_index] = m_funding[category_index] + d.amount;
           }
@@ -178,7 +178,7 @@ $(document).ready(function() {
       }
       else if(d.category === "Fashion") {
         category_index = 2;
-        if(d.event_type === "Fund Project"){
+        if(d.event_name === "Fund Project"){
           if(d.gender === "M") {
             m_funding[category_index] = m_funding[category_index] + d.amount;
           }
@@ -202,10 +202,8 @@ $(document).ready(function() {
         }
       }
       else if(d.category === "Technology") {
-        console.log("TECH");
-        console.log(d.event_type);
         category_index = 3;
-        if(d.event_type === "Fund Project"){
+        if(d.event_name === "Fund Project"){
           if(d.gender === "M") {
             m_funding[category_index] = m_funding[category_index] + d.amount;
           }
@@ -230,7 +228,7 @@ $(document).ready(function() {
       }
       else {
         category_index = 4;
-        if(d.event_type === "Fund Project"){
+        if(d.event_name === "Fund Project"){
           if(d.gender === "M") {
             m_funding[category_index] = m_funding[category_index] + d.amount;
           }
