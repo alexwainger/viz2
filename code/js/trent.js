@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  var margin = {top: 50, right: 0, bottom: 100, left: 100},
+  var margin = {top: 50, right: 0, bottom: 100, left: 60},
     width = 960 - margin.left - margin.right
     height = 430 - margin.top - margin.bottom
     categories = ["Environment", "Games", "Fashion", "Technology", "Sports"]
@@ -39,13 +39,13 @@ $(document).ready(function() {
   svg.append("text")
     .attr("class", "xaxis_label")
     .attr("text-anchor", "middle")
-    .attr("transform", "translate(" + width/2 + "," + height + ")")
+    .attr("transform", "translate(" + width/2 + "," + (height+40) + ")")
     .text("Categories");
     
   svg.append("text")
     .attr("class", "yaxis_label")
     .attr("text-anchor", "middle")
-    .attr("transform", "translate(0," + height/2 + ")rotate(-90)")
+    .attr("transform", "translate(-40," + height/2 + ")rotate(-90)")
     .text("Amount of Funding");
 
   var selections = ["Funding", "Views"], 
