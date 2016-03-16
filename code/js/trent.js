@@ -280,7 +280,7 @@ $(document).ready(function() {
     .attr("height", y(5000))
     .style("fill", function(d) { return color_bucket[0]; });*/
   state.selectAll("rect")
-    .data(m_funding).enter().append(rect)
+    .data(m_funding).enter().append("rect")
     .attr("width", "18px")
     .attr("height", function(d) { return (height - d) + "px"; })
     .attr("x", 0)
