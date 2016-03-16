@@ -279,7 +279,7 @@ $(document).ready(function() {
     .attr("y", 0)
     .attr("height", y(5000))
     .style("fill", function(d) { return color_bucket[0]; });*/
-  state.select("rect")
+  svg.select(".category")
     .data(m_funding).enter().append("rect")
     .attr("width", "18px")
     .attr("height", function(d) { return (height - y(d)) + "px"; })
