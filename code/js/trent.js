@@ -3,7 +3,7 @@ $(document).ready(function() {
     width = 960 - margin.left - margin.right
     height = 430 - margin.top - margin.bottom
     categories = ["Environment", "Games", "Fashion", "Technology", "Sports"]
-    color_bucket = ['#000099', '#990099']; // color_bucket[0]: male; color_bucket[1]: female
+    color_bucket = ['#000099', '#990099', '#808080']; // color_bucket[0]: male; color_bucket[1]: female; color_bucket[2]: unspecified
   
   var selections = ["Funding", "Views"], 
     j = 0;  // Choose "Funding" as default
@@ -277,7 +277,7 @@ $(document).ready(function() {
     .attr("width", 18)
     .attr("x", 0)
     .attr("y", 0)
-    .attr("height", 5000)
+    .attr("height", y(5000))
     .style("fill", function(d) { return color_bucket[0]; });
 
   
