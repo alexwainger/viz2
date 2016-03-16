@@ -279,33 +279,47 @@ $(document).ready(function() {
     .attr("y", 0)
     .attr("height", y(5000))
     .style("fill", function(d) { return color_bucket[0]; });
+  function apply_bars(check) {  
     
-  for(var i = 0; i < 5; i++) {
-    svg.append("rect")
-      .attr("width", "18px")
-      .attr("height", function() { return (height - y(m_funding[i])) + "px"; })
-      .attr("x", x(categories[i]))
-      .attr("y", function() { return y(m_funding[i]) + "px"; })
-      .style("fill", function() { return color_bucket[0]; });
-  }
+    if(check == 0) {
+      var m = m_funding;
+      var f = f_funding;
+      var u = u_funding;
+    }
+    
+    else {
+      var m = m_views;
+      var f = f_views;
+      var u = u_views;
+    }
+    for(var i = 0; i < 5; i++) {
+      svg.append("rect")
+        .attr("width", "18px")
+        .attr("height", function() { return (height - y(m[i])) + "px"; })
+        .attr("x", x(categories[i]))
+        .attr("y", function() { return y(m[i]) + "px"; })
+        .style("fill", function() { return color_bucket[0]; });
+    }
   
-  for(var i = 0; i < 5; i++) {
-    svg.append("rect")
-      .attr("width", "18px")
-      .attr("height", function() { return (height - y(f_funding[i])) + "px"; })
-      .attr("x", x(categories[i]) + 18)
-      .attr("y", function() { return y(f_funding[i]) + "px"; })
-      .style("fill", function() { return color_bucket[1]; });
-  }
+    for(var i = 0; i < 5; i++) {
+      svg.append("rect")
+        .attr("width", "18px")
+        .attr("height", function() { return (height - y(f[i])) + "px"; })
+        .attr("x", x(categories[i]) + 18)
+        .attr("y", function() { return y(f[i]) + "px"; })
+        .style("fill", function() { return color_bucket[1]; });
+    }
   
-  for(var i = 0; i < 5; i++) {
-    svg.append("rect")
-      .attr("width", "18px")
-      .attr("height", function() { return (height - y(u_funding[i])) + "px"; })
-      .attr("x", x(categories[i]) + 36)
-      .attr("y", function() { return y(u_funding[i]) + "px"; })
-      .style("fill", function() { return color_bucket[2]; });
+    for(var i = 0; i < 5; i++) {
+      svg.append("rect")
+        .attr("width", "18px")
+        .attr("height", function() { return (height - y(u[i])) + "px"; })
+        .attr("x", x(categories[i]) + 36)
+        .attr("y", function() { return y(u[i]) + "px"; })
+        .style("fill", function() { return color_bucket[2]; });
+    }
   }
+  apply_bars(0);
   /*state.selectAll("rect")
       .data(m_funding)
       .enter().append("rect")
