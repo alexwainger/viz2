@@ -139,13 +139,13 @@ $(document).ready(function() {
         }
         else{
           if(d.gender === "M") {
-            m_views[category_index] = m_view[category_index] + 1;
+            m_views[category_index] = m_views[category_index] + 1;
           }
           else if(d.gender === "F") {
-            f_views[category_index] = m_view[category_index] + 1;
+            f_views[category_index] = m_views[category_index] + 1;
           }
           else {
-            u_views[category_index] = m_view[category_index] + 1;
+            u_views[category_index] = m_views[category_index] + 1;
           }
         }
       }
@@ -165,13 +165,13 @@ $(document).ready(function() {
         }
         else{
           if(d.gender === "M") {
-            m_views[category_index] = m_view[category_index] + 1;
+            m_views[category_index] = m_views[category_index] + 1;
           }
           else if(d.gender === "F") {
-            f_views[category_index] = m_view[category_index] + 1;
+            f_views[category_index] = m_views[category_index] + 1;
           }
           else {
-            u_views[category_index] = m_view[category_index] + 1;
+            u_views[category_index] = m_views[category_index] + 1;
           }
         }
       }
@@ -190,13 +190,13 @@ $(document).ready(function() {
         }
         else{
           if(d.gender === "M") {
-            m_views[category_index] = m_view[category_index] + 1;
+            m_views[category_index] = m_views[category_index] + 1;
           }
           else if(d.gender === "F") {
-            f_views[category_index] = m_view[category_index] + 1;
+            f_views[category_index] = m_views[category_index] + 1;
           }
           else {
-            u_views[category_index] = m_view[category_index] + 1;
+            u_views[category_index] = m_views[category_index] + 1;
           }
         }
       }
@@ -215,13 +215,13 @@ $(document).ready(function() {
         }
         else{
           if(d.gender === "M") {
-            m_views[category_index] = m_view[category_index] + 1;
+            m_views[category_index] = m_views[category_index] + 1;
           }
           else if(d.gender === "F") {
-            f_views[category_index] = m_view[category_index] + 1;
+            f_views[category_index] = m_views[category_index] + 1;
           }
           else {
-            u_views[category_index] = m_view[category_index] + 1;
+            u_views[category_index] = m_views[category_index] + 1;
           }
         }
       }
@@ -240,13 +240,13 @@ $(document).ready(function() {
         }
         else{
           if(d.gender === "M") {
-            m_views[category_index] = m_view[category_index] + 1;
+            m_views[category_index] = m_views[category_index] + 1;
           }
           else if(d.gender === "F") {
-            f_views[category_index] = m_view[category_index] + 1;
+            f_views[category_index] = m_views[category_index] + 1;
           }
           else {
-            u_views[category_index] = m_view[category_index] + 1;
+            u_views[category_index] = m_views[category_index] + 1;
           }
         }
       }
