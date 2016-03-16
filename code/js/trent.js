@@ -339,13 +339,15 @@ $(document).ready(function() {
   console.log("YO");
   function transition() {
     svg.selectAll(".male").each(function(d, i) { 
-      d.transition()
+      /*d.transition()
         .duration(1500)
         .attr("height", function() { return (height - y(m_views[i])) + "px"; })
         .attr("y", function() { return y(m_views[i]) + "px"; })
-        .ease("linear");
+        .ease("linear");*/
         console.log(i);
-        console.log(d3.select(this));});
+        console.log(d3.select(this));
+        console.log(this);
+    });
     /*transition().duration(1500)
         .attr("height", function(d) { return (height - y(d)) + "px"; })
         .attr("y", function(d) { return y(d) + "px"; })
