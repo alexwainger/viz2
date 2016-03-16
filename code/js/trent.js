@@ -372,35 +372,9 @@ $(document).ready(function() {
         .attr("y", function() { return y(u[i]) + "px"; })
         .ease("linear");
     });
-    /*transition().duration(1500)
-        .attr("height", function(d) { return (height - y(d)) + "px"; })
-        .attr("y", function(d) { return y(d) + "px"; })
-        .ease("linear");*/
   }
   apply_bars(0);
-  /*state.selectAll("rect")
-      .data(m_funding)
-      .enter().append("rect")
-      .attr("width", "18px")
-      .attr("height", function(d) { return (height - y(d)) + "px"; })
-      .attr("x", 0)
-      .attr("y", function(d) { return y(d) + "px"; })
-      .style("fill", function() { return color_bucket[0]; });*/
-      
-    
-  /*state.append("rect")
-    .attr("width", 18)
-    .attr("x", 0)
-    .attr("y", 0)
-    .attr("height", y(5000))
-    .style("fill", function(d) { return color_bucket[0]; });*/
-  /*state.append("rect")
-    .attr("width", "18px")
-    .attr("height", function(d, i) { return (height - y(d[i])) + "px"; })
-    .attr("x", 0)
-    .attr("y", function(d, i) { return y(d[i]) + "px"; })
-    .style("fill", function(d) { return color_bucket[0]; });*/
-  console.log("ADD ME BRAH");
+  console.log("ADD ME BRAJ");
   });
 });
   
