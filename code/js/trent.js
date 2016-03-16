@@ -289,6 +289,14 @@ $(document).ready(function() {
       .attr("y", function() { return y(m_funding[i]) + "px"; })
       .style("fill", function() { return color_bucket[0]; });
   }
+  for(var i = 0; i < 5; i++) {
+    svg.append("rect")
+      .attr("width", "18px")
+      .attr("height", function() { return (height - y(f_funding[i])) + "px"; })
+      .attr("x", x(categories[i]) + 18)
+      .attr("y", function() { return y(f_funding[i]) + "px"; })
+      .style("fill", function() { return color_bucket[1]; });
+  }
   /*state.selectAll("rect")
       .data(m_funding)
       .enter().append("rect")
