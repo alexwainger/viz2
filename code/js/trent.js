@@ -271,6 +271,7 @@ $(document).ready(function() {
     .attr("class", "category")
     .attr("transform", function(d) { return "translate(" + x(d) + ",0)";})
     .attr("width", "36px");
+  console.log("ADD CATEGORIES");
  
     
     //console.log(data);
