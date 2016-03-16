@@ -39,13 +39,13 @@ $(document).ready(function() {
   svg.append("text")
     .attr("class", "xaxis_label")
     .attr("text-anchor", "middle")
-    .attr("transform", "translate(" + width/2 + "," + (height+40) + ")")
+    .attr("transform", "translate(" + width/2 + "," + (height+100) + ")")
     .text("Categories");
     
   svg.append("text")
     .attr("class", "yaxis_label")
     .attr("text-anchor", "middle")
-    .attr("transform", "translate(-40," + height/2 + ")rotate(-90)")
+    .attr("transform", "translate(-100," + height/2 + ")rotate(-90)")
     .text("Amount of Funding");
 
   var selections = ["Funding", "Views"], 
