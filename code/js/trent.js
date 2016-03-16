@@ -295,7 +295,12 @@ $(document).ready(function() {
   
   for(var i = 0; i < 5; i++) {
     var current = svg.selectAll(".category");
-    console.log(current[0][i]);
+    current[0][i].append("rect").attr("width", "18px")
+      .attr("height", function() { return (height - y(m_funding[i])) + "px"; })
+      .attr("x", 0)
+      .attr("y", function() { return y(m_funding[i]) + "px"; })
+      .style("fill", function() { return color_bucket[0]; });
+    //console.log(current[0][i]);
   }
     
 
