@@ -280,6 +280,15 @@ $(document).ready(function() {
     .attr("y", 0)
     .attr("height", y(5000))
     .style("fill", function(d) { return color_bucket[0]; });
+    
+  for(var i = 0; i < 5; i++) {
+    svg.append("rect")
+      .attr("width", "18px")
+      .attr("height", function() { return (height - y(m_funding[i])) + "px"; })
+      .attr("x", 0)
+      .attr("y", function() { return y(m_funding[i]) + "px"; })
+      .style("fill", function() { return color_bucket[0]; });
+  }
   /*state.selectAll("rect")
       .data(m_funding)
       .enter().append("rect")
