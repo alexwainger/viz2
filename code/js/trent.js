@@ -203,6 +203,7 @@ $(document).ready(function() {
         }
       }
       else if(d.category === "Technology") {
+        console.log("TECH");
         category_index = 3;
         if(d.event_type === "Fund Project"){
           if(d.gender === "M") {
