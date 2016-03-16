@@ -337,10 +337,11 @@ $(document).ready(function() {
   }
   
   function transition() {
-    svg.selectAll(".male").data(m_views).enter().transition().duration(1500)
+    svg.selectAll(".male").each(function(d) { console.log(d); };
+    /*transition().duration(1500)
         .attr("height", function(d) { return (height - y(d)) + "px"; })
         .attr("y", function(d) { return y(d) + "px"; })
-        .ease("linear");
+        .ease("linear");*/
   }
   apply_bars(0);
   /*state.selectAll("rect")
@@ -381,7 +382,7 @@ $(document).ready(function() {
   
   
     
-  console.log("ADD ME BRUH!");
+  console.log("ADD ME BRUH!!");
  
     
     //console.log(data);
