@@ -1,19 +1,27 @@
 div .viz {
-	margin-bottom: 20px;
-	margin-top: 20px;
+    margin-bottom: 20px;
+    margin-top: 20px;
 }
 
-#xiaoyi{
-  float:left;
-  height: 500px;
-  width:1000px;
-  position: relative;
+#xiaoyi {
+    float: left;
+    height: 500px;
+    width: 1000px;
+    position: relative;
 }
 
 div.xiaoyi_hoverinfo {
-	background-color: #f1f4f1;
-	opacity: 20%;
-	padding: 10px;
-	border-radius: 5px;
+    background-color: #f1f4f1;
+    opacity: 20%;
+    padding: 10px;
+    border-radius: 5px;
 }
 
+rect.bordered {
+    stroke: #E6E6E6;
+    stroke-width: 2px;
+}
+
+#jing-event-picker {
+    margin-left: 20%;
+}
