@@ -238,18 +238,17 @@ $(document).ready(function() {
     
     if(value == 0) {
       rescale_funding();
-      //console.log("Funding");
     }
     
     else {
       rescale_views();
-      svg.select(".male")
+      /*svg.select(".male")
         .transition()
         .duration(1500)
         .attr("height", function() { return (height - y(2650)) + "px"; })
         .attr("y", function() { return y(2650) + "px"; })
-        .ease("linear");
-      //console.log("Views");
+        .ease("linear");*/
+        transition();
     }
     
   }
@@ -335,6 +334,13 @@ $(document).ready(function() {
         .style("fill", function() { return color_bucket[2]; })
         .attr("class", "unspecified");
     }
+  }
+  
+  function transition() {
+    svg.selectAll(".male").data(m_views).enter().transition().duration(1500)
+        .attr("height", function(d) { return (height - y(d)) + "px"; })
+        .attr("y", function(d) { return y(d) + "px"; })
+        .ease("linear");
   }
   apply_bars(0);
   /*state.selectAll("rect")
