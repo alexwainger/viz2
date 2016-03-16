@@ -185,7 +185,7 @@ $(document).ready(function () {
     eventpicker.enter()
         .append("input")
         .attr("value", function (d) {
-            return "Event " + d
+            return "Number of " + d.split(" ")[0] + " Events";
         })
         .attr("type", "button")
         .attr("class", "event-button")
