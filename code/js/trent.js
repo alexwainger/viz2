@@ -81,7 +81,9 @@ $(document).ready(function() {
   //console.log(choice);
   
   
-  
+  var m_check = [0, 0, 0, 0, 0];
+  var f_check = [0, 0, 0, 0, 0];
+  var u_check = [0, 0, 0, 0, 0];
   var m_funding = [0, 0, 0, 0, 0];
   var f_funding = [0, 0, 0, 0, 0];
   var u_funding = [0, 0, 0, 0, 0];
@@ -101,12 +103,15 @@ $(document).ready(function() {
         if(d.event_name === "Fund Project"){
           if(d.gender === "M") {
             m_funding[category_index] = m_funding[category_index] + d.amount;
+            m_check[category_index] = m_check[category_index] + 1;
           }
           else if(d.gender === "F") {
             f_funding[category_index] = f_funding[category_index] + d.amount;
+            f_check[category_index] = f_check[category_index] + 1;
           }
           else {
             u_funding[category_index] = f_funding[category_index] + d.amount;
+            u_check[category_index] = u_check[category_index] + 1;
           }
         }
         else{
@@ -127,12 +132,15 @@ $(document).ready(function() {
         if(d.event_name === "Fund Project"){
           if(d.gender === "M") {
             m_funding[category_index] = m_funding[category_index] + d.amount;
+            m_check[category_index] = m_check[category_index] + 1;
           }
           else if(d.gender === "F") {
             f_funding[category_index] = f_funding[category_index] + d.amount;
+            f_check[category_index] = f_check[category_index] + 1;
           }
           else {
             u_funding[category_index] = f_funding[category_index] + d.amount;
+            u_check[category_index] = u_check[category_index] + 1;
           }
         }
         else{
@@ -152,12 +160,15 @@ $(document).ready(function() {
         if(d.event_name === "Fund Project"){
           if(d.gender === "M") {
             m_funding[category_index] = m_funding[category_index] + d.amount;
+            m_check[category_index] = m_check[category_index] + 1;
           }
           else if(d.gender === "F") {
             f_funding[category_index] = f_funding[category_index] + d.amount;
+            f_check[category_index] = f_check[category_index] + 1;
           }
           else {
             u_funding[category_index] = f_funding[category_index] + d.amount;
+            u_check[category_index] = u_check[category_index] + 1;
           }
         }
         else{
@@ -177,12 +188,15 @@ $(document).ready(function() {
         if(d.event_name === "Fund Project"){
           if(d.gender === "M") {
             m_funding[category_index] = m_funding[category_index] + d.amount;
+            m_check[category_index] = m_check[category_index] + 1;
           }
           else if(d.gender === "F") {
             f_funding[category_index] = f_funding[category_index] + d.amount;
+            f_check[category_index] = f_check[category_index] + 1;
           }
           else {
             u_funding[category_index] = f_funding[category_index] + d.amount;
+            u_check[category_index] = u_check[category_index] + 1;
           }
         }
         else{
@@ -202,12 +216,15 @@ $(document).ready(function() {
         if(d.event_name === "Fund Project"){
           if(d.gender === "M") {
             m_funding[category_index] = m_funding[category_index] + d.amount;
+            m_check[category_index] = m_check[category_index] + 1;
           }
           else if(d.gender === "F") {
             f_funding[category_index] = f_funding[category_index] + d.amount;
+            f_check[category_index] = f_check[category_index] + 1;
           }
           else {
             u_funding[category_index] = f_funding[category_index] + d.amount;
+            u_check[category_index] = u_check[category_index] + 1;
           }
         }
         else{
@@ -223,13 +240,18 @@ $(document).ready(function() {
         }
       }
     });
-    console.log("TEST");
+    console.log("~~~FUNDING~~~");
     console.log(m_funding);
     console.log(f_funding);
     console.log(u_funding);
+    console.log("~~~VIEWS~~~");
     console.log(m_views);
     console.log(f_views);
     console.log(u_views);
+    console.log("~~~TEST~~~");
+    console.log(m_check);
+    console.log(f_check);
+    console.log(u_check);
     
   d3.selectAll("input").on("change", change);
  
