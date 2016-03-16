@@ -260,7 +260,7 @@ $(document).ready(function() {
       .call(yAxis);
       
     svg.select(".yaxis_label")
-      .text("Amount of Funding");
+      .text("Amount of Funding (dollars)");
   }
   
   console.log(y(m_funding));
