@@ -57,8 +57,20 @@ $(document).ready(function() {
     })
     .property("checked", function(d, i) {return i===j;});
     
-  var choice = d3.select('input[name="mode"]:checked').property("value");
-  console.log(choice);
+  //var choice = d3.select('input[name="mode"]:checked').property("value");
+  //console.log(choice);
+  
+  d3.selectAll("input").on("change", change);
+  
+  function change() {
+    if(this.value === 0) {
+      console.log("Funds");
+    }
+    
+    else {
+      console.log("Views");
+    }
+  }
   d3.json("https://raw.githubusercontent.com/alexwainger/viz2/master/code/data/data.json", function(error, d) {
     var data = d.data;
     console.log(data);
