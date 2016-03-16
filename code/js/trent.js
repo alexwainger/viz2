@@ -337,6 +337,7 @@ $(document).ready(function() {
   }
   
   console.log("YO");
+  
   function transition() {
     svg.selectAll(".male").each(function(d, i) { 
       /*d.transition()
