@@ -31,7 +31,7 @@ $(document).ready(function() {
     
   var y = d3.scale.linear()
     .range([height, 0])
-    .domain([0, 77551]);
+    .domain([70000, 80000]);
     
   var x0 = d3.scale.ordinal();
   
@@ -244,7 +244,7 @@ $(document).ready(function() {
   }
   
   function rescale_views() {
-    y.domain([0, 2762]);
+    y.domain([2500, 3000]);
     
     svg.select(".y_axis")
       .transition().duration(1500).ease("sin-in-out")
@@ -255,7 +255,7 @@ $(document).ready(function() {
   }
   
   function rescale_funding() {
-    y.domain([0, 77551]);
+    y.domain([70000, 80000]);
     
     svg.select(".y_axis")
       .transition().duration(1500).ease("sin-in-out")
