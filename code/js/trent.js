@@ -5,6 +5,26 @@ $(document).ready(function() {
     categories = ["Environment", "Games", "Fashion", "Technology", "Sports"]
     color_bucket = ['#000099', '#990099']; // color_bucket[0]: male; color_bucket[1]: female
   
+  var selections = ["Funding", "Views"], 
+    j = 0;  // Choose "Funding" as default
+
+  var form = d3.select("#trent").append("form")
+    .attr("class", "toggle");
+
+  labels = form.selectAll("label")
+    .data(selections)
+    .enter()
+    .append("label")
+    .text(function(d) {return d;})
+    .insert("input")
+    .attr({
+      type: "radio",
+      id: "selection",
+      name: "mode",
+      value: function(d, i) {return i;}
+    })
+    .property("checked", function(d, i) {return i===j;});
+    
   var x = d3.scale.ordinal()
     .rangeBands([width, 0])
     .domain(categories);
@@ -48,27 +68,7 @@ $(document).ready(function() {
     .attr("transform", "translate(-55," + height/2 + ")rotate(-90)")
     .text("Amount of Funding");
 
-  var selections = ["Funding", "Views"], 
-    j = 0;  // Choose "Funding" as default
-  console.log("RADIOS");
-  // Create the shape selectors
- var form = d3.select("#trent").append("form")
-  .attr("class", "toggle");
- //var form = svg.append("form");
   
-  labels = form.selectAll("label")
-    .data(selections)
-    .enter()
-    .append("label")
-    .text(function(d) {return d;})
-    .insert("input")
-    .attr({
-      type: "radio",
-      id: "selection",
-      name: "mode",
-      value: function(d, i) {return i;}
-    })
-    .property("checked", function(d, i) {return i===j;});
   
   
   //console.log(choice);
