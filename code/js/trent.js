@@ -114,17 +114,151 @@ $(document).ready(function() {
   d3.json("https://raw.githubusercontent.com/alexwainger/viz2/master/code/data/data.json", function(error, d) {
     if (error) throw error;
     var data = d.data;
-    console.log(data.category);
     var m_funding = [0, 0, 0, 0, 0];
     var f_funding = [0, 0, 0, 0, 0];
+    var u_funding = [0, 0, 0, 0, 0];
     var m_views = [0, 0, 0, 0, 0];
     var f_views = [0, 0, 0, 0, 0];
+    var u_views = [0, 0, 0, 0, 0];
+    
     data.forEach(function(d) {
-      console.log(d.category);
+      var category_index = -1;
       
+      if(d.category === "Environment") {
+        category_index = 0;
+        if(d.event_type === "Fund Project"){
+          if(d.gender === "M") {
+            m_funding[category_index] = m_funding[category_index] + d.amount;
+          }
+          else if(d.gender === "F") {
+            f_funding[category_index] = f_funding[category_index] + d.amount;
+          }
+          else {
+            u_funding[category_index] = f_funding[category_index] + d.amount;
+          }
+        }
+        else{
+          if(d.gender === "M") {
+            m_views[category_index] = m_view[category_index] + 1;
+          }
+          else if(d.gender === "F") {
+            f_views[category_index] = m_view[category_index] + 1;
+          }
+          else {
+            u_views[category_index] = m_view[category_index] + 1;
+          }
+        }
+      }
+      
+      else if(d.category === "Games") {
+        category_index = 1;
+        if(d.event_type === "Fund Project"){
+          if(d.gender === "M") {
+            m_funding[category_index] = m_funding[category_index] + d.amount;
+          }
+          else if(d.gender === "F") {
+            f_funding[category_index] = f_funding[category_index] + d.amount;
+          }
+          else {
+            u_funding[category_index] = f_funding[category_index] + d.amount;
+          }
+        }
+        else{
+          if(d.gender === "M") {
+            m_views[category_index] = m_view[category_index] + 1;
+          }
+          else if(d.gender === "F") {
+            f_views[category_index] = m_view[category_index] + 1;
+          }
+          else {
+            u_views[category_index] = m_view[category_index] + 1;
+          }
+        }
+      }
+      else if(d.category === "Fashion") {
+        category_index = 2;
+        if(d.event_type === "Fund Project"){
+          if(d.gender === "M") {
+            m_funding[category_index] = m_funding[category_index] + d.amount;
+          }
+          else if(d.gender === "F") {
+            f_funding[category_index] = f_funding[category_index] + d.amount;
+          }
+          else {
+            u_funding[category_index] = f_funding[category_index] + d.amount;
+          }
+        }
+        else{
+          if(d.gender === "M") {
+            m_views[category_index] = m_view[category_index] + 1;
+          }
+          else if(d.gender === "F") {
+            f_views[category_index] = m_view[category_index] + 1;
+          }
+          else {
+            u_views[category_index] = m_view[category_index] + 1;
+          }
+        }
+      }
+      else if(d.category === "Technology") {
+        category_index = 3;
+        if(d.event_type === "Fund Project"){
+          if(d.gender === "M") {
+            m_funding[category_index] = m_funding[category_index] + d.amount;
+          }
+          else if(d.gender === "F") {
+            f_funding[category_index] = f_funding[category_index] + d.amount;
+          }
+          else {
+            u_funding[category_index] = f_funding[category_index] + d.amount;
+          }
+        }
+        else{
+          if(d.gender === "M") {
+            m_views[category_index] = m_view[category_index] + 1;
+          }
+          else if(d.gender === "F") {
+            f_views[category_index] = m_view[category_index] + 1;
+          }
+          else {
+            u_views[category_index] = m_view[category_index] + 1;
+          }
+        }
+      }
+      else {
+        category_index = 4;
+        if(d.event_type === "Fund Project"){
+          if(d.gender === "M") {
+            m_funding[category_index] = m_funding[category_index] + d.amount;
+          }
+          else if(d.gender === "F") {
+            f_funding[category_index] = f_funding[category_index] + d.amount;
+          }
+          else {
+            u_funding[category_index] = f_funding[category_index] + d.amount;
+          }
+        }
+        else{
+          if(d.gender === "M") {
+            m_views[category_index] = m_view[category_index] + 1;
+          }
+          else if(d.gender === "F") {
+            f_views[category_index] = m_view[category_index] + 1;
+          }
+          else {
+            u_views[category_index] = m_view[category_index] + 1;
+          }
+        }
+      }
     });
     console.log(data);
     console.log(data.length);
+    console.log(m_funding);
+    console.log(f_funding);
+    console.log(u_funding);
+    console.log(m_view);
+    console.log(f_view);
+    console.log(u_view);
     
     //console.log(data);
   });
