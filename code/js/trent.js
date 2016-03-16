@@ -231,6 +231,7 @@ $(document).ready(function() {
  
   function change() {
     var value = this.value;
+    apply_bars(value);
     if(value == 0) {
       rescale_funding();
       //console.log("Funding");
@@ -252,6 +253,7 @@ $(document).ready(function() {
       
     svg.select(".yaxis_label")
       .text("Number of Views");
+      
   }
   
   function rescale_funding() {
