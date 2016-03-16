@@ -39,8 +39,8 @@ $(document).ready(function() {
     
   var yAxis = d3.svg.axis()
     .scale(y)
-    .orient("left")
-    .tickFormat(function(d) {return "$" + d; });
+    .orient("left");
+    //.tickFormat(function(d) {return "$" + d; });
     
   var svg = d3.select("#trent").append("svg")
     .attr("width", width + margin.left + margin.right)
@@ -67,7 +67,7 @@ $(document).ready(function() {
     .attr("class", "yaxis_label")
     .attr("text-anchor", "middle")
     .attr("transform", "translate(-55," + height/2 + ")rotate(-90)")
-    .text("Amount of Funding");
+    .text("Amount of Funding (dollars)");
 
   
   
@@ -246,8 +246,7 @@ $(document).ready(function() {
     
     svg.select(".y_axis")
       .transition().duration(1500).ease("sin-in-out")
-      .call(yAxis)
-      .tickFormat(function(d) {return d; });
+      .call(yAxis);
       
     svg.select(".yaxis_label")
       .text("Number of Views");
@@ -258,8 +257,7 @@ $(document).ready(function() {
     
     svg.select(".y_axis")
       .transition().duration(1500).ease("sin-in-out")
-      .call(yAxis)
-      .tickFormat(function(d) {return "$" + d; });
+      .call(yAxis);
       
     svg.select(".yaxis_label")
       .text("Amount of Funding");
