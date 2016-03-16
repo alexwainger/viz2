@@ -333,8 +333,7 @@ $(document).ready(function() {
         .attr("x", x(categories[i]) + 36)
         .attr("y", function() { return y(u[i]) + "px"; })
         .style("fill", function() { return color_bucket[2]; })
-        .attr("class", "unspecified")
-        .transition().duration(500);
+        .attr("class", "unspecified");
     }
   }
   apply_bars(0);
