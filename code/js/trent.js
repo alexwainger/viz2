@@ -387,7 +387,7 @@ $(document).ready(function() {
         .style("fill", function() { return color_bucket[2]; })
         .attr("class", "unspecified")
         .append("title")
-        .text("Unspecified");
+        .text(functon(d) { return "Unspecified"; });
     }
   }
   
