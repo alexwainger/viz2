@@ -111,15 +111,16 @@ $(document).ready(function() {
       .text("Amount of Funding");
   }
   
+  var m_funding = [0, 0, 0, 0, 0];
+  var f_funding = [0, 0, 0, 0, 0];
+  var u_funding = [0, 0, 0, 0, 0];
+  var m_views = [0, 0, 0, 0, 0];
+  var f_views = [0, 0, 0, 0, 0];
+  var u_views = [0, 0, 0, 0, 0];
   d3.json("https://raw.githubusercontent.com/alexwainger/viz2/master/code/data/data.json", function(error, d) {
     if (error) throw error;
     var data = d.data;
-    var m_funding = [0, 0, 0, 0, 0];
-    var f_funding = [0, 0, 0, 0, 0];
-    var u_funding = [0, 0, 0, 0, 0];
-    var m_views = [0, 0, 0, 0, 0];
-    var f_views = [0, 0, 0, 0, 0];
-    var u_views = [0, 0, 0, 0, 0];
+   
     
     data.forEach(function(d) {
       var category_index = -1;
@@ -256,9 +257,9 @@ $(document).ready(function() {
     console.log(m_funding);
     console.log(f_funding);
     console.log(u_funding);
-    console.log(m_view);
-    console.log(f_view);
-    console.log(u_view);
+    console.log(m_views);
+    console.log(f_views);
+    console.log(u_views);
     
     //console.log(data);
   });
