@@ -90,12 +90,14 @@ $(document).ready(function() {
   var m_views = [0, 0, 0, 0, 0];
   var f_views = [0, 0, 0, 0, 0];
   var u_views = [0, 0, 0, 0, 0];
+  var entries = 0;
   d3.json("https://raw.githubusercontent.com/alexwainger/viz2/master/code/data/data.json", function(error, d) {
     if (error) throw error;
     var data = d.data;
    
     
     data.forEach(function(d) {
+      entries = entries + 1;
       var category_index = -1;
       
       if(d.category === "Environment") {
@@ -259,6 +261,7 @@ $(document).ready(function() {
     }
     console.log("~~~SUM~~~");
     console.log(sum);
+    console.log(entries);
     
   d3.selectAll("input").on("change", change);
  
