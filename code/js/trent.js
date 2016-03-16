@@ -3,7 +3,7 @@ $(document).ready(function() {
     width = 960 - margin.left - margin.right
     height = 430 - margin.top - margin.bottom
     categories = ["Environment", "Games", "Fashion", "Technology", "Sports"]
-    color_bucket = ['#000099', '#990099']; // color_bucket[0]: male; color_bucket[1]: female
+    color_bucket = ['#000099', '#990099', '#808080']; // color_bucket[0]: male; color_bucket[1]: female; color_bucket[2]: unspecified
   
   var selections = ["Funding", "Views"], 
     j = 0;  // Choose "Funding" as default
@@ -30,8 +30,10 @@ $(document).ready(function() {
     .domain(categories);
     
   var y = d3.scale.linear()
-    .range([height, 0])
-    .domain([0, 77551]);
+    .range([height, 0]);
+    //.domain([70000, 80000]);
+    
+  var x0 = d3.scale.ordinal();
   
   var xAxis = d3.svg.axis()
     .scale(x)
@@ -40,6 +42,10 @@ $(document).ready(function() {
   var yAxis = d3.svg.axis()
     .scale(y)
     .orient("left");
+  
+  y.domain([70000, 80000]);
+  yAxis.scale(y);
+  
     //.tickFormat(function(d) {return "$" + d; });
     
   var svg = d3.select("#trent").append("svg")
@@ -60,7 +66,7 @@ $(document).ready(function() {
   svg.append("text")
     .attr("class", "xaxis_label")
     .attr("text-anchor", "middle")
-    .attr("transform", "translate(" + width/2 + "," + (height+80) + ")")
+    .attr("transform", "translate(" + width/2 + "," + (height+50) + ")")
     .text("Categories");
     
   svg.append("text")
@@ -75,7 +81,9 @@ $(document).ready(function() {
   //console.log(choice);
   
   
-  
+  var m_check = [0, 0, 0, 0, 0];
+  var f_check = [0, 0, 0, 0, 0];
+  var u_check = [0, 0, 0, 0, 0];
   var m_funding = [0, 0, 0, 0, 0];
   var f_funding = [0, 0, 0, 0, 0];
   var u_funding = [0, 0, 0, 0, 0];
@@ -95,12 +103,15 @@ $(document).ready(function() {
         if(d.event_name === "Fund Project"){
           if(d.gender === "M") {
             m_funding[category_index] = m_funding[category_index] + d.amount;
+            m_check[category_index] = m_check[category_index] + 1;
           }
           else if(d.gender === "F") {
             f_funding[category_index] = f_funding[category_index] + d.amount;
+            f_check[category_index] = f_check[category_index] + 1;
           }
           else {
             u_funding[category_index] = f_funding[category_index] + d.amount;
+            u_check[category_index] = u_check[category_index] + 1;
           }
         }
         else{
@@ -121,12 +132,15 @@ $(document).ready(function() {
         if(d.event_name === "Fund Project"){
           if(d.gender === "M") {
             m_funding[category_index] = m_funding[category_index] + d.amount;
+            m_check[category_index] = m_check[category_index] + 1;
           }
           else if(d.gender === "F") {
             f_funding[category_index] = f_funding[category_index] + d.amount;
+            f_check[category_index] = f_check[category_index] + 1;
           }
           else {
             u_funding[category_index] = f_funding[category_index] + d.amount;
+            u_check[category_index] = u_check[category_index] + 1;
           }
         }
         else{
@@ -146,12 +160,15 @@ $(document).ready(function() {
         if(d.event_name === "Fund Project"){
           if(d.gender === "M") {
             m_funding[category_index] = m_funding[category_index] + d.amount;
+            m_check[category_index] = m_check[category_index] + 1;
           }
           else if(d.gender === "F") {
             f_funding[category_index] = f_funding[category_index] + d.amount;
+            f_check[category_index] = f_check[category_index] + 1;
           }
           else {
             u_funding[category_index] = f_funding[category_index] + d.amount;
+            u_check[category_index] = u_check[category_index] + 1;
           }
         }
         else{
@@ -171,12 +188,15 @@ $(document).ready(function() {
         if(d.event_name === "Fund Project"){
           if(d.gender === "M") {
             m_funding[category_index] = m_funding[category_index] + d.amount;
+            m_check[category_index] = m_check[category_index] + 1;
           }
           else if(d.gender === "F") {
             f_funding[category_index] = f_funding[category_index] + d.amount;
+            f_check[category_index] = f_check[category_index] + 1;
           }
           else {
             u_funding[category_index] = f_funding[category_index] + d.amount;
+            u_check[category_index] = u_check[category_index] + 1;
           }
         }
         else{
@@ -196,12 +216,15 @@ $(document).ready(function() {
         if(d.event_name === "Fund Project"){
           if(d.gender === "M") {
             m_funding[category_index] = m_funding[category_index] + d.amount;
+            m_check[category_index] = m_check[category_index] + 1;
           }
           else if(d.gender === "F") {
             f_funding[category_index] = f_funding[category_index] + d.amount;
+            f_check[category_index] = f_check[category_index] + 1;
           }
           else {
             u_funding[category_index] = f_funding[category_index] + d.amount;
+            u_check[category_index] = u_check[category_index] + 1;
           }
         }
         else{
@@ -217,65 +240,170 @@ $(document).ready(function() {
         }
       }
     });
-    console.log("TEST");
+    console.log("~~~FUNDING~~~");
     console.log(m_funding);
     console.log(f_funding);
     console.log(u_funding);
+    console.log("~~~VIEWS~~~");
     console.log(m_views);
     console.log(f_views);
     console.log(u_views);
+    console.log("~~~TEST~~~");
+    console.log(m_check);
+    console.log(f_check);
+    console.log(u_check);
+    var total = m_views.concat(f_views, u_views, m_check, f_check, u_check);
+    var sum = 0;
+    for(var i = 0; i < total.length; i++) {
+      sum = sum + total[i];
+    }
+    console.log("~~~SUM~~~");
+    console.log(sum);
     
-    d3.selectAll("input").on("change", change);
+  d3.selectAll("input").on("change", change);
  
   function change() {
     var value = this.value;
+    
     if(value == 0) {
       rescale_funding();
-      //console.log("Funding");
+      transition(value);
     }
     
     else {
       rescale_views();
-      //console.log("Views");
+      /*svg.select(".male")
+        .transition()
+        .duration(1500)
+        .attr("height", function() { return (height - y(2650)) + "px"; })
+        .attr("y", function() { return y(2650) + "px"; })
+        .ease("linear");*/
+        transition(value);
     }
     
   }
   
   function rescale_views() {
-    y.domain([0, 2762]);
-    
+    y.domain([2500, 3000]);
+    yAxis.scale(y);
+   
     svg.select(".y_axis")
       .transition().duration(1500).ease("sin-in-out")
       .call(yAxis);
-      
+    
     svg.select(".yaxis_label")
       .text("Number of Views");
+      
   }
   
   function rescale_funding() {
-    y.domain([0, 77551]);
-    
+    y.domain([70000, 80000]);
+    yAxis.scale(y);
     svg.select(".y_axis")
       .transition().duration(1500).ease("sin-in-out")
-      .call(yAxis);
-      
+      .call(yAxis);;
+
+    
+    
     svg.select(".yaxis_label")
       .text("Amount of Funding (dollars)");
   }
-  console.log("CHECKER1");
-  console.log(y(77551));
   
-  var state = svg.selectAll(".category")
+  /*var state = svg.selectAll(".category")
     .data(categories)
     .enter().append("g")
     .attr("class", "category")
-    .attr("transform", function(d) { return "translate(" + x(d) + ",0)";})
-    .attr("width", "36px");
-    
-  console.log("ADD CATEGORIES");
+    .attr("transform", function(d) { return "translate(" + x(d) + ",0)";});*/
  
+  /*svg.append("rect")
+    .attr("width", 18)
+    .attr("x", 0)
+    .attr("y", 0)
+    .attr("height", y(5000))
+    .style("fill", function(d) { return color_bucket[0]; });*/
     
-    //console.log(data);
+  function apply_bars(check) {  
+    
+    if(check == 0) {
+      var m = m_funding;
+      var f = f_funding;
+      var u = u_funding;
+    }
+    
+    else {
+      var m = m_views;
+      var f = f_views;
+      var u = u_views;
+    }
+    for(var i = 0; i < 5; i++) {
+      svg.append("rect")
+        .attr("width", "18px")
+        .attr("height", function() { return (height - y(m[i])) + "px"; })
+        .attr("x", x(categories[i]))
+        .attr("y", function() { return y(m[i]) + "px"; })
+        .style("fill", function() { return color_bucket[0]; })
+        .attr("class", "male");
+    }
+  
+    for(var i = 0; i < 5; i++) {
+      svg.append("rect")
+        .attr("width", "18px")
+        .attr("height", function() { return (height - y(f[i])) + "px"; })
+        .attr("x", x(categories[i]) + 18)
+        .attr("y", function() { return y(f[i]) + "px"; })
+        .style("fill", function() { return color_bucket[1]; })
+        .attr("class", "female");
+    }
+  
+    for(var i = 0; i < 5; i++) {
+      svg.append("rect")
+        .attr("width", "18px")
+        .attr("height", function() { return (height - y(u[i])) + "px"; })
+        .attr("x", x(categories[i]) + 36)
+        .attr("y", function() { return y(u[i]) + "px"; })
+        .style("fill", function() { return color_bucket[2]; })
+        .attr("class", "unspecified");
+    }
+  }
+  
+  console.log("YO");
+  
+  function transition(check) {
+    if(check == 0) {
+      var m = m_funding;
+      var f = f_funding;
+      var u = u_funding;
+    }
+    
+    else {
+      var m = m_views;
+      var f = f_views;
+      var u = u_views;
+    }
+    svg.selectAll(".male").each(function(d, i) { 
+      d3.select(this).transition()
+        .duration(1500)
+        .attr("height", function() { return (height - y(m[i])) + "px"; })
+        .attr("y", function() { return y(m[i]) + "px"; })
+        .ease("linear");
+    });
+    svg.selectAll(".female").each(function(d, i) { 
+      d3.select(this).transition()
+        .duration(1500)
+        .attr("height", function() { return (height - y(f[i])) + "px"; })
+        .attr("y", function() { return y(f[i]) + "px"; })
+        .ease("linear");
+    });
+    svg.selectAll(".unspecified").each(function(d, i) { 
+      d3.select(this).transition()
+        .duration(1500)
+        .attr("height", function() { return (height - y(u[i])) + "px"; })
+        .attr("y", function() { return y(u[i]) + "px"; })
+        .ease("linear");
+    });
+  }
+  apply_bars(0);
+  console.log("ADD ME BRAJ");
   });
 });
   
