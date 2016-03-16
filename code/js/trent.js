@@ -385,7 +385,9 @@ $(document).ready(function() {
         .attr("x", x(categories[i]) + 36)
         .attr("y", function() { return y(u[i]) + "px"; })
         .style("fill", function() { return color_bucket[2]; })
-        .attr("class", "unspecified");
+        .attr("class", "unspecified")
+        .append("svg:title")
+        .text("Unspecified: " + u[i]);
     }
   }
   
@@ -426,7 +428,7 @@ $(document).ready(function() {
     });
   }
   apply_bars(0);
-  console.log("ADD ME BRAJ");
+  console.log("ADD ME BRAJ!");
   });
 });
   
