@@ -222,7 +222,7 @@ $(document).ready(function() {
           }
         }
       }
-      else {
+      else if(d.category === "Sports") {
         category_index = 4;
         if(d.event_name === "Fund Project"){
           entries = entries + 1;
@@ -253,7 +253,7 @@ $(document).ready(function() {
         }
       }
     });
-    console.log("~~~FUNDING~~~");
+    console.log("~~~FUNDING!~~~");
     console.log(m_funding);
     console.log(f_funding);
     console.log(u_funding);
