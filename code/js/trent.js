@@ -238,6 +238,7 @@ $(document).ready(function() {
     
     if(value == 0) {
       rescale_funding();
+      transition(value);
     }
     
     else {
@@ -248,7 +249,7 @@ $(document).ready(function() {
         .attr("height", function() { return (height - y(2650)) + "px"; })
         .attr("y", function() { return y(2650) + "px"; })
         .ease("linear");*/
-        transition();
+        transition(value);
     }
     
   }
@@ -338,15 +339,38 @@ $(document).ready(function() {
   
   console.log("YO");
   
-  function transition() {
+  function transition(check) {
+    if(check == 0) {
+      var m = m_funding;
+      var f = f_funding;
+      var u = u_funding;
+    }
+    
+    else {
+      var m = m_views;
+      var f = f_views;
+      var u = u_views;
+    }
     svg.selectAll(".male").each(function(d, i) { 
       d3.select(this).transition()
         .duration(1500)
-        .attr("height", function() { return (height - y(m_views[i])) + "px"; })
-        .attr("y", function() { return y(m_views[i]) + "px"; })
+        .attr("height", function() { return (height - y(m[i])) + "px"; })
+        .attr("y", function() { return y(m[i]) + "px"; })
         .ease("linear");
-        
-        console.log(this);
+    });
+    svg.selectAll(".female").each(function(d, i) { 
+      d3.select(this).transition()
+        .duration(1500)
+        .attr("height", function() { return (height - y(f[i])) + "px"; })
+        .attr("y", function() { return y(f[i]) + "px"; })
+        .ease("linear");
+    });
+    svg.selectAll(".unspecified").each(function(d, i) { 
+      d3.select(this).transition()
+        .duration(1500)
+        .attr("height", function() { return (height - y(u[i])) + "px"; })
+        .attr("y", function() { return y(u[i]) + "px"; })
+        .ease("linear");
     });
     /*transition().duration(1500)
         .attr("height", function(d) { return (height - y(d)) + "px"; })
