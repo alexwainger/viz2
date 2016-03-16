@@ -57,7 +57,7 @@ $(document).ready(function() {
     })
     .property("checked", function(d, i) {return i===j;});
     
-  var choice = document.getElementById("selection");
+  var choice = d3.select('input[name="mode"]:checked').node().value;
   console.log(choice);
   d3.json("https://raw.githubusercontent.com/alexwainger/viz2/master/code/data/data.json", function(error, d) {
     var data = d.data;
