@@ -92,6 +92,7 @@ $(document).ready(function() {
   var u_views = [0, 0, 0, 0, 0];
   var entries = 0;
   var view_check = 0;
+  var checker = 0;
   d3.json("https://raw.githubusercontent.com/alexwainger/viz2/master/code/data/data.json", function(error, d) {
     if (error) throw error;
     var data = d.data;
@@ -109,26 +110,32 @@ $(document).ready(function() {
           if(d.gender === "M") {
             m_funding[category_index] = m_funding[category_index] + d.amount;
             m_check[category_index] = m_check[category_index] + 1;
+            checker = checker + 1;
           }
           else if(d.gender === "F") {
             f_funding[category_index] = f_funding[category_index] + d.amount;
             f_check[category_index] = f_check[category_index] + 1;
+            checker = checker + 1;
           }
           else {
             u_funding[category_index] = f_funding[category_index] + d.amount;
             u_check[category_index] = u_check[category_index] + 1;
+            checker = checker + 1;
           }
         }
         else{
           view_check = view_check+1;
           if(d.gender === "M") {
             m_views[category_index] = m_views[category_index] + 1;
+            checker = checker + 1;
           }
           else if(d.gender === "F") {
             f_views[category_index] = m_views[category_index] + 1;
+            checker = checker + 1;
           }
           else {
             u_views[category_index] = m_views[category_index] + 1;
+            checker = checker + 1;
           }
         }
       }
@@ -140,26 +147,32 @@ $(document).ready(function() {
           if(d.gender === "M") {
             m_funding[category_index] = m_funding[category_index] + d.amount;
             m_check[category_index] = m_check[category_index] + 1;
+            checker = checker + 1;
           }
           else if(d.gender === "F") {
             f_funding[category_index] = f_funding[category_index] + d.amount;
             f_check[category_index] = f_check[category_index] + 1;
+            checker = checker + 1;
           }
           else {
             u_funding[category_index] = f_funding[category_index] + d.amount;
             u_check[category_index] = u_check[category_index] + 1;
+            checker = checker + 1;
           }
         }
         else{
           view_check = view_check+1;
           if(d.gender === "M") {
             m_views[category_index] = m_views[category_index] + 1;
+            checker = checker + 1;
           }
           else if(d.gender === "F") {
             f_views[category_index] = m_views[category_index] + 1;
+            checker = checker + 1;
           }
           else {
             u_views[category_index] = m_views[category_index] + 1;
+            checker = checker + 1;
           }
         }
       }
@@ -170,26 +183,32 @@ $(document).ready(function() {
           if(d.gender === "M") {
             m_funding[category_index] = m_funding[category_index] + d.amount;
             m_check[category_index] = m_check[category_index] + 1;
+            checker = checker + 1;
           }
           else if(d.gender === "F") {
             f_funding[category_index] = f_funding[category_index] + d.amount;
             f_check[category_index] = f_check[category_index] + 1;
+            checker = checker + 1;
           }
           else {
             u_funding[category_index] = f_funding[category_index] + d.amount;
             u_check[category_index] = u_check[category_index] + 1;
+            checker = checker + 1;
           }
         }
         else{
           view_check = view_check+1;
           if(d.gender === "M") {
             m_views[category_index] = m_views[category_index] + 1;
+            checker = checker + 1;
           }
           else if(d.gender === "F") {
             f_views[category_index] = m_views[category_index] + 1;
+            checker = checker + 1;
           }
           else {
             u_views[category_index] = m_views[category_index] + 1;
+            checker = checker + 1;
           }
         }
       }
@@ -201,26 +220,32 @@ $(document).ready(function() {
           if(d.gender === "M") {
             m_funding[category_index] = m_funding[category_index] + d.amount;
             m_check[category_index] = m_check[category_index] + 1;
+            checker = checker + 1;
           }
           else if(d.gender === "F") {
             f_funding[category_index] = f_funding[category_index] + d.amount;
             f_check[category_index] = f_check[category_index] + 1;
+            checker = checker + 1;
           }
           else {
             u_funding[category_index] = f_funding[category_index] + d.amount;
             u_check[category_index] = u_check[category_index] + 1;
+            checker = checker + 1;
           }
         }
         else{
           view_check = view_check+1;
           if(d.gender === "M") {
             m_views[category_index] = m_views[category_index] + 1;
+            checker = checker + 1;
           }
           else if(d.gender === "F") {
             f_views[category_index] = m_views[category_index] + 1;
+            checker = checker + 1;
           }
           else {
             u_views[category_index] = m_views[category_index] + 1;
+            checker = checker + 1;
           }
         }
       }
@@ -231,26 +256,32 @@ $(document).ready(function() {
           if(d.gender === "M") {
             m_funding[category_index] = m_funding[category_index] + d.amount;
             m_check[category_index] = m_check[category_index] + 1;
+            checker = checker + 1;
           }
           else if(d.gender === "F") {
             f_funding[category_index] = f_funding[category_index] + d.amount;
             f_check[category_index] = f_check[category_index] + 1;
+            checker = checker + 1;
           }
           else {
             u_funding[category_index] = f_funding[category_index] + d.amount;
             u_check[category_index] = u_check[category_index] + 1;
+            checker = checker + 1;
           }
         }
         else{
           view_check = view_check+1;
           if(d.gender === "M") {
             m_views[category_index] = m_views[category_index] + 1;
+            checker = checker + 1;
           }
           else if(d.gender === "F") {
             f_views[category_index] = m_views[category_index] + 1;
+            checker = checker + 1;
           }
           else {
             u_views[category_index] = m_views[category_index] + 1;
+            checker = checker + 1;
           }
         }
       }
@@ -278,6 +309,8 @@ $(document).ready(function() {
     console.log(entries);
     console.log("~~~VIEWS~~~");
     console.log(view_check);
+    console.log("~~~CHECKER~~~");
+    console.log(checker);
     
   d3.selectAll("input").on("change", change);
  
