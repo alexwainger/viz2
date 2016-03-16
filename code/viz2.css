@@ -30,5 +30,11 @@ div.xiaoyi_hoverinfo {
 	stroke: #000;
 }
 
+#trent .toggle {
+	position: absolute;
+	right: 10px;
+	top: 10px;
+}
+
 
 
