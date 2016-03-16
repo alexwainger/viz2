@@ -271,8 +271,7 @@ $(document).ready(function() {
     .data(categories)
     .enter().append("g")
     .attr("class", "category")
-    .attr("transform", function(d) { return "translate(" + x(d) + ",0)";})
-    .attr("width", "36px");
+    .attr("transform", function(d) { return "translate(" + x(d) + ",0)";});
 
   
   
