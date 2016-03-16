@@ -252,8 +252,7 @@ $(document).ready(function() {
         }
       }
     });
-    console.log(data);
-    console.log(data.length);
+    console.log("TEST");
     console.log(m_funding);
     console.log(f_funding);
     console.log(u_funding);
