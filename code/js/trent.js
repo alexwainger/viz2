@@ -265,6 +265,14 @@ $(document).ready(function() {
   console.log("CHECKER1");
   console.log(y(77551));
   
+  var state = svg.selectAll(".category")
+    .data(categories)
+    .enter().append("g")
+    .attr("class", "category")
+    .attr("transform", function(d) { return "translate(" + x(d) + ",0)";})
+    .attr("width", "36px");
+    
+  console.log("ADD CATEGORIES");
  
     
     //console.log(data);
