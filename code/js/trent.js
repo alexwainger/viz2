@@ -340,7 +340,7 @@ $(document).ready(function() {
   
   function transition() {
     svg.selectAll(".male").each(function(d, i) { 
-      this.transition()
+      d3.select(this).transition()
         .duration(1500)
         .attr("height", function() { return (height - y(m_views[i])) + "px"; })
         .attr("y", function() { return y(m_views[i]) + "px"; })
@@ -376,7 +376,7 @@ $(document).ready(function() {
     .attr("x", 0)
     .attr("y", function(d, i) { return y(d[i]) + "px"; })
     .style("fill", function(d) { return color_bucket[0]; });*/
-  console.log("ADD ME BRAH!1");
+  console.log("ADD ME BRAH");
   });
 });
   
