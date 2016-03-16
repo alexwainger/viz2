@@ -91,6 +91,7 @@ $(document).ready(function() {
   var f_views = [0, 0, 0, 0, 0];
   var u_views = [0, 0, 0, 0, 0];
   var entries = 0;
+  var view_check = 0;
   d3.json("https://raw.githubusercontent.com/alexwainger/viz2/master/code/data/data.json", function(error, d) {
     if (error) throw error;
     var data = d.data;
@@ -118,6 +119,7 @@ $(document).ready(function() {
           }
         }
         else{
+          view_check = view_check+1;
           if(d.gender === "M") {
             m_views[category_index] = m_views[category_index] + 1;
           }
@@ -148,6 +150,7 @@ $(document).ready(function() {
           }
         }
         else{
+          view_check = view_check+1;
           if(d.gender === "M") {
             m_views[category_index] = m_views[category_index] + 1;
           }
@@ -177,6 +180,7 @@ $(document).ready(function() {
           }
         }
         else{
+          view_check = view_check+1;
           if(d.gender === "M") {
             m_views[category_index] = m_views[category_index] + 1;
           }
@@ -206,6 +210,7 @@ $(document).ready(function() {
           }
         }
         else{
+          view_check = view_check+1;
           if(d.gender === "M") {
             m_views[category_index] = m_views[category_index] + 1;
           }
@@ -235,6 +240,7 @@ $(document).ready(function() {
           }
         }
         else{
+          view_check = view_check+1;
           if(d.gender === "M") {
             m_views[category_index] = m_views[category_index] + 1;
           }
@@ -268,6 +274,8 @@ $(document).ready(function() {
     console.log(sum);
     console.log("~~~CHECK~~~");
     console.log(entries);
+    console.log("~~~VIEWS~~~");
+    console.log(view_check);
     
   d3.selectAll("input").on("change", change);
  
