@@ -292,7 +292,7 @@ $(document).ready(function() {
     .attr("y", function(d, i) { return y(d[i]) + "px"; })
     .style("fill", function(d) { return color_bucket[0]; });*/
   for(var i = 0; i < 5; i++) {
-    var tester = svg.selectAll(".category");
+    var tester = svg.select(".category");
     
     console.log(tester);
   }
