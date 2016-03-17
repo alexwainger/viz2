@@ -1,0 +1,56 @@
+div .viz {
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+#xiaoyi {
+    float: left;
+    height: 500px;
+    width: 1000px;
+    position: relative;
+}
+
+div.xiaoyi_hoverinfo {
+    background-color: #f1f4f1;
+    opacity: 20%;
+    padding: 10px;
+    border-radius: 5px;
+}
+#trent .x_axis path,
+#trent .x_axis line {
+	fill: none;
+	shape-rendering: crispEdges;
+	stroke: #000;
+}
+
+#trent .y_axis path,
+#trent .y_axis line {
+	fill: none;
+	shape-rendering: crispEdges;
+	stroke: #000;
+}
+
+#trent .toggle {
+	padding-left: 455px;
+	padding-top: 20px;
+}
+#trent .tooltip {
+	position: absolute
+	text-align: center;
+	width: 60px;
+	height: 28px;
+	padding: 2px;
+	font: 12px san-serif;
+	background: lightsteelblue;
+	border: 0px;
+	border-radius: 8px;
+	pointer-events: none;
+}
+rect.bordered {
+    stroke: #E6E6E6;
+    stroke-width: 2px;
+}
+
+#jing-event-picker {
+    margin-left: 15%;
+}
