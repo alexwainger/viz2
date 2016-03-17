@@ -459,7 +459,7 @@ $(document).ready(function() {
         .append("rect")
         .attr("width", 100)
         .attr("height", 18)
-        .attr("x", 850)
+        .attr("x", 780)
         .style("fill", "white");
         
   }
@@ -474,7 +474,7 @@ $(document).ready(function() {
         .style("fill", function() { return color_bucket[i]; });
         
       d3.select(this).append("text")
-        .attr("x", width -24)
+        .attr("x", width - 24)
         .attr("y", 9)
         .attr("dy", ".35em")
         .style("text-anchor", "end")
