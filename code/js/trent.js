@@ -363,7 +363,7 @@ $(document).ready(function() {
       svg.append("rect")
         .attr("width", "30px")
         .attr("height", function() { return (height - y(m[i])) + "px"; })
-        .attr("x", x(categories[i]) + 88)
+        .attr("x", x(categories[i]) + 43)
         .attr("y", function() { return y(m[i]) + "px"; })
         .style("fill", function() { return color_bucket[0]; })
         .attr("class", "male")
@@ -375,7 +375,7 @@ $(document).ready(function() {
       svg.append("rect")
         .attr("width", "30px")
         .attr("height", function() { return (height - y(f[i])) + "px"; })
-        .attr("x", x(categories[i]) + 118)
+        .attr("x", x(categories[i]) + 73)
         .attr("y", function() { return y(f[i]) + "px"; })
         .style("fill", function() { return color_bucket[1]; })
         .attr("class", "female")
@@ -387,7 +387,7 @@ $(document).ready(function() {
       svg.append("rect")
         .attr("width", "30px")
         .attr("height", function() { return (height - y(u[i])) + "px"; })
-        .attr("x", x(categories[i]) + 148)
+        .attr("x", x(categories[i]) + 103)
         .attr("y", function() { return y(u[i]) + "px"; })
         .style("fill", function() { return color_bucket[2]; })
         .attr("class", "unspecified")
@@ -415,21 +415,27 @@ $(document).ready(function() {
         .duration(1500)
         .attr("height", function() { return (height - y(m[i])) + "px"; })
         .attr("y", function() { return y(m[i]) + "px"; })
-        .ease("linear");
+        .ease("linear")
+        .append("title")
+        .text(function(d) { return "$" + m[i]; });
     });
     svg.selectAll(".female").each(function(d, i) { 
       d3.select(this).transition()
         .duration(1500)
         .attr("height", function() { return (height - y(f[i])) + "px"; })
         .attr("y", function() { return y(f[i]) + "px"; })
-        .ease("linear");
+        .ease("linear")
+        .append("title")
+        .text(function(d) { return "$" + f[i]; });
     });
     svg.selectAll(".unspecified").each(function(d, i) { 
       d3.select(this).transition()
         .duration(1500)
         .attr("height", function() { return (height - y(u[i])) + "px"; })
         .attr("y", function() { return y(u[i]) + "px"; })
-        .ease("linear");
+        .ease("linear")
+        .append("title")
+        .text(function(d) { return "$" + u[i]; });;
     });
   }
   apply_bars(0);
