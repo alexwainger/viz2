@@ -361,34 +361,38 @@ $(document).ready(function() {
     }
     for(var i = 0; i < 5; i++) {
       svg.append("rect")
-        .attr("width", "18px")
+        .attr("width", "30px")
         .attr("height", function() { return (height - y(m[i])) + "px"; })
-        .attr("x", x(categories[i]) + 18)
+        .attr("x", x(categories[i]) + 88)
         .attr("y", function() { return y(m[i]) + "px"; })
         .style("fill", function() { return color_bucket[0]; })
-        .attr("class", "male");
+        .attr("class", "male")
+        .append("title")
+        .text(function(d) { return "$" + m[i]; });;
     }
   
     for(var i = 0; i < 5; i++) {
       svg.append("rect")
-        .attr("width", "18px")
+        .attr("width", "30px")
         .attr("height", function() { return (height - y(f[i])) + "px"; })
-        .attr("x", x(categories[i]) + 36)
+        .attr("x", x(categories[i]) + 118)
         .attr("y", function() { return y(f[i]) + "px"; })
         .style("fill", function() { return color_bucket[1]; })
-        .attr("class", "female");
+        .attr("class", "female")
+        .append("title")
+        .text(function(d) { return "$" + f[i]; });;
     }
   
     for(var i = 0; i < 5; i++) {
       svg.append("rect")
-        .attr("width", "18px")
+        .attr("width", "30px")
         .attr("height", function() { return (height - y(u[i])) + "px"; })
-        .attr("x", x(categories[i]) + 64)
+        .attr("x", x(categories[i]) + 148)
         .attr("y", function() { return y(u[i]) + "px"; })
         .style("fill", function() { return color_bucket[2]; })
         .attr("class", "unspecified")
         .append("title")
-        .text(function(d) { return "Unspecified"; });
+        .text(function(d) { return "$" + u[i]; });
     }
   }
   
