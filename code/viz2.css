@@ -56,11 +56,11 @@ rect.bordered {
     margin-bottom: 20px;
 }
 
-h3 {
-    margin-left: 15%;
+#jing p {
+    width:860px;
+    margin-left: 100px;
 }
 
-#jing-writeup {
-    width:860px;
+#jing h1 {
     margin-left: 100px;
 }
