@@ -1,4 +1,9 @@
 $(document).ready(function() {
+  
+  d3.select("#trent").append("p").text("Author: Trent Yee; Login: tmyee; Date: March 17, 2016");
+  d3.select("#trent").append("p").text("The visualization below organizes the Bootloader data by gender, category and event type. Using this bar chart, Bootloader is able to see: (1) the amount of funding for each category and gender and (2) the number of views for each category and gender.");
+  d3.select("#trent").append("p").text("By default, the bar chart below shows the amount of funding organized by category and then gender. You can see that there are five groups of bars each representing a specific category (labeled on the x-axis). Each group has three bars: the red bar representing the amount of male funding, the purple bar representing the amount of female funding and the blue bar representing the amount of unspecified funding, for the corresponding category. The amount of funding is labeled on the y-axis.");
+  d3.select("#trent").append("p").text("By toggling the radio buttons labeled “Funding” and “Views”, the bar chart user can alternate between a bar chart with the amount of funding and a bar chart showing the number of views. If you click the “Views” radio button, the y-axis will adjust its scale and the each bar will adjust its height to show the number of views for each category and gender. Additionally, hovering over any bar on the chart changes the color of that bar.");
   var margin = {top: 25, right: 0, bottom: 100, left: 80},
     width = 960 - margin.left - margin.right,
     height = 430 - margin.top - margin.bottom,
