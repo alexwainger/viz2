@@ -459,8 +459,8 @@ $(document).ready(function() {
         .append("rect")
         .attr("width", 100)
         .attr("height", 100)
-        .style("fill", "white")
-        .attr("transform", function() { return "translate(0," + i*20 + ")"; });
+        .attr("x", 800)
+        .style("fill", "white");
         
   }
   
