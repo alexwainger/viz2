@@ -3,7 +3,8 @@ $(document).ready(function() {
     width = 960 - margin.left - margin.right
     height = 430 - margin.top - margin.bottom
     categories = ["Environment", "Games", "Fashion", "Technology", "Sports"]
-    color_bucket = ['#000099', '#990099', '#808080']
+    color_bucket = ['#FF3333', '#990099', '#0000CC']
+    alt_color_bucket = ['#FF6633', '#9900CC', '#0000FF']
     genders = ["Male", "Female", "Unspecified"]; // color_bucket[0]: male; color_bucket[1]: female; color_bucket[2]: unspecified
   
   var selections = ["Funding", "Views"], 
@@ -368,8 +369,13 @@ $(document).ready(function() {
         .attr("y", function() { return y(m[i]) + "px"; })
         .style("fill", function() { return color_bucket[0]; })
         .attr("class", "male")
-        .append("title")
-        .text(function(d) { return "$" + m[i]; });;
+        .on("mouseover", function() {
+          d3.select(this).style("fill", function() { return alt_color_bucket[0]; });
+        })
+        .on("mouseout",  function() {
+          d3.select(this).style("fill", function() { return color_bucket[0]; });
+        });
+        
     }
   
     for(var i = 0; i < 5; i++) {
@@ -380,8 +386,12 @@ $(document).ready(function() {
         .attr("y", function() { return y(f[i]) + "px"; })
         .style("fill", function() { return color_bucket[1]; })
         .attr("class", "female")
-        .append("title")
-        .text(function(d) { return "$" + f[i]; });;
+        .on("mouseover", function() {
+          d3.select(this).style("fill", function() { return alt_color_bucket[1]; });
+        })
+        .on("mouseout",  function() {
+          d3.select(this).style("fill", function() { return color_bucket[1]; });
+        });
     }
   
     for(var i = 0; i < 5; i++) {
@@ -392,8 +402,12 @@ $(document).ready(function() {
         .attr("y", function() { return y(u[i]) + "px"; })
         .style("fill", function() { return color_bucket[2]; })
         .attr("class", "unspecified")
-        .append("title")
-        .text(function(d) { return "$" + u[i]; });
+        .on("mouseover", function() {
+          d3.select(this).style("fill", function() { return alt_color_bucket[2]; });
+        })
+        .on("mouseout",  function() {
+          d3.select(this).style("fill", function() { return color_bucket[2]; });
+        });
     }
   }
   
@@ -452,7 +466,7 @@ $(document).ready(function() {
     .text(function(d) { return d; });
     
   apply_bars(0);
-  console.log("ADD ME!!!!");
+  console.log("ADD M!!");
   });
 });
   
