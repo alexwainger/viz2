@@ -1,17 +1,26 @@
 $(document).ready(function() {
+  d3.select("#trent").append("h1").text("Bar Chart: Amount of Funding and Number of Views");
+  d3.select("#trent").append("p").text("Author: Trent Yee; Login: tmyee; Date: March 17, 2016");
+  d3.select("#trent").append("p").text("The visualization below organizes the Bootloader data by gender, category and event type. Using this bar chart, Bootloader is able to see: (1) the amount of funding for each category and gender and (2) the number of views for each category and gender.");
+  d3.select("#trent").append("p").text("By default, the bar chart below shows the amount of funding organized by category and then gender. You can see that there are five groups of bars each representing a specific category (labeled on the x-axis). Each group has three bars: the red bar representing the amount of male funding, the purple bar representing the amount of female funding and the blue bar representing the amount of unspecified funding, for the corresponding category. The amount of funding is labeled on the y-axis.");
+  d3.select("#trent").append("p").text("By toggling the radio buttons labeled “Funding” and “Views”, the bar chart user can alternate between a bar chart with the amount of funding and a bar chart showing the number of views. If you click the “Views” radio button, the y-axis will adjust its scale and the each bar will adjust its height to show the number of views for each category and gender. Additionally, hovering over any bar on the chart changes the color of that bar.");
   var margin = {top: 25, right: 0, bottom: 100, left: 80},
-    width = 960 - margin.left - margin.right
-    height = 430 - margin.top - margin.bottom
-    categories = ["Environment", "Games", "Fashion", "Technology", "Sports"]
-    color_bucket = ['#000099', '#990099', '#808080']; // color_bucket[0]: male; color_bucket[1]: female; color_bucket[2]: unspecified
+    width = 960 - margin.left - margin.right,
+    height = 430 - margin.top - margin.bottom,
+    categories = ["Environment", "Games", "Fashion", "Technology", "Sports"],
+    color_bucket = ['#E00000', '#990099', '#0000CC'],
+    alt_color_bucket = ['#FF6600', '#9900CC', '#0000FF'],
+    genders = ["Male", "Female", "Unspecified"]; /*color_bucket[0]: male; color_bucket[1]: female; color_bucket[2]: unspecified*/
   
   var selections = ["Funding", "Views"], 
-    j = 0;  // Choose "Funding" as default
+    j = 0;  /*Choose "Funding" as default*/
 
+  /* Add radio buttons */
   var form = d3.select("#trent").append("form")
     .attr("class", "toggle");
 
-  labels = form.selectAll("label")
+  /* Apply radio button labels */
+  var labels = form.selectAll("label")
     .data(selections)
     .enter()
     .append("label")
@@ -25,29 +34,30 @@ $(document).ready(function() {
     })
     .property("checked", function(d, i) {return i===j;});
     
+  /* xAxis scale */
   var x = d3.scale.ordinal()
     .rangeBands([width, 0])
     .domain(categories);
     
+  /* yAxis scale */ 
   var y = d3.scale.linear()
     .range([height, 0]);
-    //.domain([70000, 80000]);
-    
-  var x0 = d3.scale.ordinal();
-  
+
+  /* xAxis */
   var xAxis = d3.svg.axis()
     .scale(x)
     .orient("bottom");
-    
+  
+  /* yAxis */
   var yAxis = d3.svg.axis()
     .scale(y)
-    .orient("left");
+    .orient("left")
+    .innerTickSize(-width);
   
-  y.domain([70000, 80000]);
+  y.domain([70000, 78000]);
   yAxis.scale(y);
   
-    //.tickFormat(function(d) {return "$" + d; });
-    
+ /* Create g for bar chart */
   var svg = d3.select("#trent").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
@@ -75,43 +85,33 @@ $(document).ready(function() {
     .attr("transform", "translate(-65," + height/2 + ")rotate(-90)")
     .text("Amount of Funding (dollars)");
 
+  /* Arrays used to keep track of funding and views for each gender */
+  var m_funding = [0, 0, 0, 0, 0]; /* Male Funding --> [0]: Environment, [1]: Games, [2]: Fashion, [3]: Tech, [4]: Sports */ 
+  var f_funding = [0, 0, 0, 0, 0]; /* Female Funding --> [0]: Environment, [1]: Games, [2]: Fashion, [3]: Tech, [4]: Sports */ 
+  var u_funding = [0, 0, 0, 0, 0]; /* Unspecified Funding --> [0]: Environment, [1]: Games, [2]: Fashion, [3]: Tech, [4]: Sports */ 
   
-  
-  
-  //console.log(choice);
-  
-  
-  var m_check = [0, 0, 0, 0, 0];
-  var f_check = [0, 0, 0, 0, 0];
-  var u_check = [0, 0, 0, 0, 0];
-  var m_funding = [0, 0, 0, 0, 0];
-  var f_funding = [0, 0, 0, 0, 0];
-  var u_funding = [0, 0, 0, 0, 0];
-  var m_views = [0, 0, 0, 0, 0];
-  var f_views = [0, 0, 0, 0, 0];
-  var u_views = [0, 0, 0, 0, 0];
-  d3.json("https://raw.githubusercontent.com/alexwainger/viz2/master/code/data/data.json", function(error, d) {
+  var m_views = [0, 0, 0, 0, 0]; /* Male Views --> [0]: Environment, [1]: Games, [2]: Fashion, [3]: Tech, [4]: Sports */ 
+  var f_views = [0, 0, 0, 0, 0]; /* Female Views --> [0]: Environment, [1]: Games, [2]: Fashion, [3]: Tech, [4]: Sports */ 
+  var u_views = [0, 0, 0, 0, 0]; /* Unspecified Views --> [0]: Environment, [1]: Games, [2]: Fashion, [3]: Tech, [4]: Sports */ 
+ 
+  d3.json("../data/data.json", function(error, d) {
     if (error) throw error;
     var data = d.data;
-   
     
     data.forEach(function(d) {
       var category_index = -1;
-      
       if(d.category === "Environment") {
+        
         category_index = 0;
         if(d.event_name === "Fund Project"){
           if(d.gender === "M") {
             m_funding[category_index] = m_funding[category_index] + d.amount;
-            m_check[category_index] = m_check[category_index] + 1;
           }
           else if(d.gender === "F") {
             f_funding[category_index] = f_funding[category_index] + d.amount;
-            f_check[category_index] = f_check[category_index] + 1;
           }
           else {
             u_funding[category_index] = f_funding[category_index] + d.amount;
-            u_check[category_index] = u_check[category_index] + 1;
           }
         }
         else{
@@ -132,15 +132,12 @@ $(document).ready(function() {
         if(d.event_name === "Fund Project"){
           if(d.gender === "M") {
             m_funding[category_index] = m_funding[category_index] + d.amount;
-            m_check[category_index] = m_check[category_index] + 1;
           }
           else if(d.gender === "F") {
             f_funding[category_index] = f_funding[category_index] + d.amount;
-            f_check[category_index] = f_check[category_index] + 1;
           }
           else {
             u_funding[category_index] = f_funding[category_index] + d.amount;
-            u_check[category_index] = u_check[category_index] + 1;
           }
         }
         else{
@@ -160,15 +157,12 @@ $(document).ready(function() {
         if(d.event_name === "Fund Project"){
           if(d.gender === "M") {
             m_funding[category_index] = m_funding[category_index] + d.amount;
-            m_check[category_index] = m_check[category_index] + 1;
           }
           else if(d.gender === "F") {
             f_funding[category_index] = f_funding[category_index] + d.amount;
-            f_check[category_index] = f_check[category_index] + 1;
           }
           else {
             u_funding[category_index] = f_funding[category_index] + d.amount;
-            u_check[category_index] = u_check[category_index] + 1;
           }
         }
         else{
@@ -188,15 +182,12 @@ $(document).ready(function() {
         if(d.event_name === "Fund Project"){
           if(d.gender === "M") {
             m_funding[category_index] = m_funding[category_index] + d.amount;
-            m_check[category_index] = m_check[category_index] + 1;
           }
           else if(d.gender === "F") {
             f_funding[category_index] = f_funding[category_index] + d.amount;
-            f_check[category_index] = f_check[category_index] + 1;
           }
           else {
             u_funding[category_index] = f_funding[category_index] + d.amount;
-            u_check[category_index] = u_check[category_index] + 1;
           }
         }
         else{
@@ -211,20 +202,17 @@ $(document).ready(function() {
           }
         }
       }
-      else {
+      else if(d.category === "Sports") {
         category_index = 4;
         if(d.event_name === "Fund Project"){
           if(d.gender === "M") {
             m_funding[category_index] = m_funding[category_index] + d.amount;
-            m_check[category_index] = m_check[category_index] + 1;
           }
           else if(d.gender === "F") {
             f_funding[category_index] = f_funding[category_index] + d.amount;
-            f_check[category_index] = f_check[category_index] + 1;
           }
           else {
             u_funding[category_index] = f_funding[category_index] + d.amount;
-            u_check[category_index] = u_check[category_index] + 1;
           }
         }
         else{
@@ -240,146 +228,153 @@ $(document).ready(function() {
         }
       }
     });
-    console.log("~~~FUNDING~~~");
-    console.log(m_funding);
-    console.log(f_funding);
-    console.log(u_funding);
-    console.log("~~~VIEWS~~~");
-    console.log(m_views);
-    console.log(f_views);
-    console.log(u_views);
-    console.log("~~~TEST~~~");
-    console.log(m_check);
-    console.log(f_check);
-    console.log(u_check);
-    var total = m_views.concat(f_views, u_views, m_check, f_check, u_check);
-    var sum = 0;
-    for(var i = 0; i < total.length; i++) {
-      sum = sum + total[i];
-    }
-    console.log("~~~SUM~~~");
-    console.log(sum);
-    
+  
+  /* Display initial bars (funding) */
+  apply_bars(0);
+  /* Set up radio button listener */
   d3.selectAll("input").on("change", change);
- 
+  
+    /* Apply bar chart legend */
+  for(var i = 0; i < 3; i++) {
+    svg.append("g")
+      .attr("class", "legend")
+      .attr("transform", function() { return "translate(0," + i*20 + ")"; })
+        .append("rect")
+        .attr("width", 100)
+        .attr("height", 20)
+        .attr("x", 780)
+        .style("fill", "white");
+  }
+  
+  svg.selectAll(".legend").each(function(d, i) {
+      /* Apply legend color labels */
+      d3.select(this).append("rect")
+        .attr("x", width - 18)
+        .attr("width", 18)
+        .attr("height", 18)
+        .style("fill", function() { return color_bucket[i]; });
+        
+      /* Apply legend text labels */ 
+      d3.select(this).append("text")
+        .attr("x", width - 24)
+        .attr("y", 9)
+        .attr("dy", ".35em")
+        .style("text-anchor", "end")
+        .text(function() {  return genders[i]; });
+  });
+
   function change() {
     var value = this.value;
-    
     if(value == 0) {
       rescale_funding();
       transition(value);
     }
-    
     else {
       rescale_views();
-      /*svg.select(".male")
-        .transition()
-        .duration(1500)
-        .attr("height", function() { return (height - y(2650)) + "px"; })
-        .attr("y", function() { return y(2650) + "px"; })
-        .ease("linear");*/
-        transition(value);
+      transition(value);
     }
-    
   }
   
+  /* Function rescales yAxis to show "views" */
   function rescale_views() {
-    y.domain([2500, 3000]);
+    y.domain([2600, 2800]);
     yAxis.scale(y);
-   
+    svg.select(".y_axis")
+      .transition().duration(800).ease("sin-in-out")
+      .call(yAxis);
+    svg.select(".yaxis_label")
+      .text("Number of Views");
+  }
+  
+  /* Function rescales yAxis to show "funding" */
+  function rescale_funding() {
+    y.domain([70000, 78000]);
+    yAxis.scale(y);
     svg.select(".y_axis")
       .transition().duration(1500).ease("sin-in-out")
       .call(yAxis);
-    
-    svg.select(".yaxis_label")
-      .text("Number of Views");
-      
-  }
-  
-  function rescale_funding() {
-    y.domain([70000, 80000]);
-    yAxis.scale(y);
-    svg.select(".y_axis")
-      .transition().duration(1500).ease("sin-in-out")
-      .call(yAxis);;
-
-    
-    
-    svg.select(".yaxis_label")
+    svg.select(".yaxis_label").transition().duration(800)
       .text("Amount of Funding (dollars)");
   }
-  
-  /*var state = svg.selectAll(".category")
-    .data(categories)
-    .enter().append("g")
-    .attr("class", "category")
-    .attr("transform", function(d) { return "translate(" + x(d) + ",0)";});*/
- 
-  /*svg.append("rect")
-    .attr("width", 18)
-    .attr("x", 0)
-    .attr("y", 0)
-    .attr("height", y(5000))
-    .style("fill", function(d) { return color_bucket[0]; });*/
     
+  /* Display initial bars */
   function apply_bars(check) {  
-    
     if(check == 0) {
       var m = m_funding;
       var f = f_funding;
       var u = u_funding;
     }
-    
     else {
       var m = m_views;
       var f = f_views;
       var u = u_views;
     }
+    /* Apply male bars */
     for(var i = 0; i < 5; i++) {
       svg.append("rect")
-        .attr("width", "18px")
+        .attr("width", "30px")
         .attr("height", function() { return (height - y(m[i])) + "px"; })
-        .attr("x", x(categories[i]))
+        .attr("x", x(categories[i]) + 43)
         .attr("y", function() { return y(m[i]) + "px"; })
         .style("fill", function() { return color_bucket[0]; })
-        .attr("class", "male");
+        .attr("class", "male")
+        .on("mouseover", function() {
+          d3.select(this).style("fill", function() { return alt_color_bucket[0]; });
+        })
+        .on("mouseout",  function() {
+          d3.select(this).style("fill", function() { return color_bucket[0]; });
+        });
     }
   
+    /* Apply female bars */
     for(var i = 0; i < 5; i++) {
       svg.append("rect")
-        .attr("width", "18px")
+        .attr("width", "30px")
         .attr("height", function() { return (height - y(f[i])) + "px"; })
-        .attr("x", x(categories[i]) + 18)
+        .attr("x", x(categories[i]) + 73)
         .attr("y", function() { return y(f[i]) + "px"; })
         .style("fill", function() { return color_bucket[1]; })
-        .attr("class", "female");
+        .attr("class", "female")
+        .on("mouseover", function() {
+          d3.select(this).style("fill", function() { return alt_color_bucket[1]; });
+        })
+        .on("mouseout",  function() {
+          d3.select(this).style("fill", function() { return color_bucket[1]; });
+        });
     }
-  
+    
+    /* Apply unspecified bars */
     for(var i = 0; i < 5; i++) {
       svg.append("rect")
-        .attr("width", "18px")
+        .attr("width", "30px")
         .attr("height", function() { return (height - y(u[i])) + "px"; })
-        .attr("x", x(categories[i]) + 36)
+        .attr("x", x(categories[i]) + 103)
         .attr("y", function() { return y(u[i]) + "px"; })
         .style("fill", function() { return color_bucket[2]; })
-        .attr("class", "unspecified");
+        .attr("class", "unspecified")
+        .on("mouseover", function() {
+          d3.select(this).style("fill", function() { return alt_color_bucket[2]; });
+        })
+        .on("mouseout",  function() {
+          d3.select(this).style("fill", function() { return color_bucket[2]; });
+        });
     }
   }
-  
-  console.log("YO");
-  
+  /* Function transitions bars on bar chart depending on radio button selection */
   function transition(check) {
+    /* Show views */
     if(check == 0) {
       var m = m_funding;
       var f = f_funding;
       var u = u_funding;
     }
-    
+    /* Show funding */
     else {
       var m = m_views;
       var f = f_views;
       var u = u_views;
     }
+    /* Transition male bars */
     svg.selectAll(".male").each(function(d, i) { 
       d3.select(this).transition()
         .duration(1500)
@@ -387,6 +382,8 @@ $(document).ready(function() {
         .attr("y", function() { return y(m[i]) + "px"; })
         .ease("linear");
     });
+    
+     /* Transition female bars */
     svg.selectAll(".female").each(function(d, i) { 
       d3.select(this).transition()
         .duration(1500)
@@ -394,6 +391,8 @@ $(document).ready(function() {
         .attr("y", function() { return y(f[i]) + "px"; })
         .ease("linear");
     });
+    
+    /* Transition unspecified bars */
     svg.selectAll(".unspecified").each(function(d, i) { 
       d3.select(this).transition()
         .duration(1500)
@@ -402,8 +401,7 @@ $(document).ready(function() {
         .ease("linear");
     });
   }
-  apply_bars(0);
-  console.log("ADD ME BRAJ");
+  //console.log("FINISHED");
   });
 });
   
