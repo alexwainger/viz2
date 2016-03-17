@@ -468,7 +468,7 @@ $(document).ready(function() {
   svg.selectAll(".legend").each(function(d, i) {
         
       d3.select(this).append("rect")
-        .attr("x", width)
+        .attr("x", width -24)
         .attr("y", 9)
         .attr("width", 18)
         .attr("height", 18)
