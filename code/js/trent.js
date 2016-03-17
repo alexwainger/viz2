@@ -268,6 +268,7 @@ $(document).ready(function() {
         }
       }
     });
+    /*
     console.log("~~~FUNDING!~~~");
     console.log(m_funding);
     console.log(f_funding);
@@ -283,7 +284,7 @@ $(document).ready(function() {
     console.log(view_check);
     console.log("~~~CHECKER~~~");
     console.log(checker);
-    
+    */
   d3.selectAll("input").on("change", change);
  
   function change() {
@@ -415,7 +416,7 @@ $(document).ready(function() {
     }
   }
   
-  console.log("YO");
+  //console.log("YO");
   
   function transition(check) {
     if(check == 0) {
@@ -479,22 +480,9 @@ $(document).ready(function() {
         .attr("dy", ".35em")
         .style("text-anchor", "end")
         .text(function() {  return genders[i]; });
-      console.log(this);
+      //console.log(this);
   });
-  
-  /*legend.append("rect")
-    .attr("x", width - 18)
-    .attr("width", 18)
-    .attr("height", 18)
-    .style("fill", function(i) { return color_bucket[i]; });*/
-  
-  /*legend.append("text")
-    .attr("x", width - 24)
-    .attr("y", 9)
-    .attr("dy", ".35em")
-    .style("text-anchor", "end")
-    .text(function(d) { return d; });*/
-    
+
   apply_bars(0);
   console.log("FINISHED!!!");
   });
