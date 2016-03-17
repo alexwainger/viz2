@@ -447,20 +447,27 @@ $(document).ready(function() {
         .ease("linear");
     });
   }
-  var legend = svg.selectAll(".legend")
-    .data(genders).enter().append("g")
-    .attr("class", "legend")
-    .attr("transform", function(d, i) { return "translate(0," + i*20 + ")"; });
+  for(var i = 0; i < 3; i++) {
+    svg.append("g")
+      .attr("class", "legend")
+      .attr("transform", function() { return "translate(0," + i*20 + ")"; });
+  }
   
   
-    svg.selectAll(".legend").each(function(d, i) { 
-       d3.select(this).append("rect")
-          .attr("x", width - 18)
-          .attr("width", 18)
-          .attr("height", 18)
-          .style("fill", function(i) { return color_bucket[i]; });
-        console.log(this);
-     });
+  svg.selectAll(".legend").each(function(d, i) { 
+      d3.select(this).append("rect")
+        .attr("x", width - 18)
+        .attr("width", 18)
+        .attr("height", 18)
+        .style("fill", function(i) { return color_bucket[i]; })
+          .append("text")
+          .attr("x", width - 24)
+          .attr("y", 9)
+          .attr("dy", ".35em")
+          .style("text-anchor", "end")
+          .text(function(d) { return d; });
+      console.log(this);
+  });
   
   /*legend.append("rect")
     .attr("x", width - 18)
