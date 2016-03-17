@@ -44,4 +44,14 @@ rect.bordered {
 
 #jing-event-picker {
     margin-left: 15%;
+    margin-bottom: 20px;
+}
+
+h3 {
+    margin-left: 15%;
+}
+
+#jing-writeup {
+    width:860px;
+    margin-left: 100px;
 }

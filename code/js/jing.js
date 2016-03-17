@@ -1,6 +1,6 @@
 $(document).ready(function () {
     var margin = {
-            top: 50,
+            top: 30,
             right: 0,
             bottom: 70,
             left: 100
@@ -218,4 +218,9 @@ $(document).ready(function () {
         .on("click", function (d) {
             heatmap(d);
         });
+    
+    var writeup = document.createElement('div');
+    writeup.id = 'jing-writeup';
+    document.getElementById('jing').appendChild(writeup);
+    writeup.textContent = "This is a heatmap showing you the number of viewing and funding actions at each hour for each category over one month. You can switch between displaying view events and fund events by clicking on the buttons. When you mouse over each grid, it will show the total number of actions in a month for the selected action. The heat map shows that there are more views in the afternoon and at night, and people are more likely to fund a project in the evening. There are more views for sports projects after 8pm, and there are more people funding sports after 8 pm as well. However, there is no significant correlation between viewing and funding actions for other categories at a certain time.";
 });
