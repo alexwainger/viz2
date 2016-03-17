@@ -458,7 +458,7 @@ $(document).ready(function() {
       .attr("transform", function() { return "translate(0," + i*20 + ")"; })
         .append("rect")
         .attr("width", 100)
-        .attr("height", 18)
+        .attr("height", 20)
         .attr("x", 780)
         .style("fill", "white");
         
@@ -496,7 +496,7 @@ $(document).ready(function() {
     .text(function(d) { return d; });*/
     
   apply_bars(0);
-  console.log("DONE!!");
+  console.log("FINISHED!");
   });
 });
   
