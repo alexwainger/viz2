@@ -44,7 +44,7 @@ $(document).ready(function() {
   var yAxis = d3.svg.axis()
     .scale(y)
     .orient("left")
-    .innerTickSize(width);
+    .innerTickSize(-width);
   
   y.domain([70000, 80000]);
   yAxis.scale(y);
@@ -452,7 +452,7 @@ $(document).ready(function() {
     .attr("class", "legend")
     .attr("transform", function(d, i) { return "translate(0," + i*20 + ")"; });
   
-  for(var i = 0; i < 3; i++) {
+  
     svg.selectAll(".legend").each(function(d, i) { 
        d3.select(this).append("rect")
           .attr("x", width - 18)
@@ -461,7 +461,6 @@ $(document).ready(function() {
           .style("fill", function(i) { return color_bucket[i]; });
         console.log(this);
      });
-  }
   
   /*legend.append("rect")
     .attr("x", width - 18)
