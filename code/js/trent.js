@@ -313,7 +313,7 @@ $(document).ready(function() {
     yAxis.scale(y);
    
     svg.select(".y_axis")
-      .transition().duration(1500).ease("sin-in-out")
+      .transition().duration(800).ease("sin-in-out")
       .call(yAxis);
     
     svg.select(".yaxis_label")
@@ -460,12 +460,12 @@ $(document).ready(function() {
         .attr("width", 18)
         .attr("height", 18)
         .style("fill", function(i) { return color_bucket[i]; })
-          .append("text")
-          .attr("x", width - 24)
-          .attr("y", 9)
-          .attr("dy", ".35em")
-          .style("text-anchor", "end")
-          .text(function(d) { return d; });
+      d3.select(this).append("text")
+        .attr("x", width - 24)
+        .attr("y", 9)
+        .attr("dy", ".35em")
+        .style("text-anchor", "end")
+        .text(function(d) { return d; });
       console.log(this);
   });
   
