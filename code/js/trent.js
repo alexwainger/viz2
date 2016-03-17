@@ -13,7 +13,7 @@ $(document).ready(function() {
   var form = d3.select("#trent").append("form")
     .attr("class", "toggle");
 
-  labels = form.selectAll("label")
+  var labels = form.selectAll("label")
     .data(selections)
     .enter()
     .append("label")
@@ -50,7 +50,13 @@ $(document).ready(function() {
   yAxis.scale(y);
   
     //.tickFormat(function(d) {return "$" + d; });
-    
+  var tip = d3.tip()
+  .attr('class', 'd3-tip')
+  .offset([-10, 0])
+  .html(function(d) {
+    return "<strong>Amount: </strong> <span style='color:red'> $" + 10 + "</span>";
+  });
+  
   var svg = d3.select("#trent").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
@@ -80,7 +86,7 @@ $(document).ready(function() {
 
   
   
-  
+  svg.call(tip);
   //console.log(choice);
   
   var m_funding = [0, 0, 0, 0, 0];
@@ -371,9 +377,11 @@ $(document).ready(function() {
         .attr("class", "male")
         .on("mouseover", function() {
           d3.select(this).style("fill", function() { return alt_color_bucket[0]; });
+          tip.show;
         })
         .on("mouseout",  function() {
           d3.select(this).style("fill", function() { return color_bucket[0]; });
+          tip.hide;
         });
         
     }
@@ -447,6 +455,7 @@ $(document).ready(function() {
         .ease("linear");
     });
   }
+  
   for(var i = 0; i < 3; i++) {
     svg.append("g")
       .attr("class", "legend")
@@ -459,7 +468,7 @@ $(document).ready(function() {
         .attr("x", width - 18)
         .attr("width", 18)
         .attr("height", 18)
-        .style("fill", function(i) { return color_bucket[i]; })
+        .style("fill", function() { return color_bucket[i]; })
       d3.select(this).append("text")
         .attr("x", width - 24)
         .attr("y", 9)
@@ -483,7 +492,7 @@ $(document).ready(function() {
     .text(function(d) { return d; });*/
     
   apply_bars(0);
-  console.log("!!!");
+  console.log("!");
   });
 });
   
