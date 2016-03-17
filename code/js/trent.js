@@ -455,7 +455,11 @@ $(document).ready(function() {
   for(var i = 0; i < 3; i++) {
     svg.append("g")
       .attr("class", "legend")
-      .attr("transform", function() { return "translate(0," + i*20 + ")"; });
+      .attr("transform", function() { return "translate(0," + i*20 + ")"; })
+        .append("rect")
+        .attr("width", "100%")
+        .attr("height", "100%")
+        .style("fill", "white");
   }
   
   
