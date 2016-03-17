@@ -475,12 +475,12 @@ $(document).ready(function() {
     .attr("height", 18)
     .style("fill", function(i) { return color_bucket[i]; });*/
   
-  legend.append("text")
+  /*legend.append("text")
     .attr("x", width - 24)
     .attr("y", 9)
     .attr("dy", ".35em")
     .style("text-anchor", "end")
-    .text(function(d) { return d; });
+    .text(function(d) { return d; });*/
     
   apply_bars(0);
   console.log("!");
