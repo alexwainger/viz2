@@ -4,7 +4,7 @@ $(document).ready(function() {
     height = 430 - margin.top - margin.bottom,
     categories = ["Environment", "Games", "Fashion", "Technology", "Sports"],
     color_bucket = ['#E00000', '#990099', '#0000CC'],
-    alt_color_bucket = ['#FF3399', '#9900CC', '#0000FF'],
+    alt_color_bucket = ['#FF6600', '#9900CC', '#0000FF'],
     genders = ["Male", "Female", "Unspecified"]; // color_bucket[0]: male; color_bucket[1]: female; color_bucket[2]: unspecified
   
   var selections = ["Funding", "Views"], 
@@ -496,7 +496,7 @@ $(document).ready(function() {
     .text(function(d) { return d; });*/
     
   apply_bars(0);
-  console.log("FINISHED!!");
+  console.log("FINISHED!!!");
   });
 });
   
