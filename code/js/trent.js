@@ -44,7 +44,7 @@ $(document).ready(function() {
   var yAxis = d3.svg.axis()
     .scale(y)
     .orient("left")
-    .tickSize([width, 5]);
+    .tickSize(width);
   
   y.domain([70000, 80000]);
   yAxis.scale(y);
