@@ -94,7 +94,7 @@ $(document).ready(function() {
   var f_views = [0, 0, 0, 0, 0]; /* Female Views --> [0]: Environment, [1]: Games, [2]: Fashion, [3]: Tech, [4]: Sports */ 
   var u_views = [0, 0, 0, 0, 0]; /* Unspecified Views --> [0]: Environment, [1]: Games, [2]: Fashion, [3]: Tech, [4]: Sports */ 
  
-  d3.json("https://raw.githubusercontent.com/alexwainger/viz2/master/code/data/data.json", function(error, d) {
+  d3.json("../data/data.json", function(error, d) {
     if (error) throw error;
     var data = d.data;
     
