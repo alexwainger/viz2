@@ -3,7 +3,8 @@ $(document).ready(function() {
     width = 960 - margin.left - margin.right
     height = 430 - margin.top - margin.bottom
     categories = ["Environment", "Games", "Fashion", "Technology", "Sports"]
-    color_bucket = ['#000099', '#990099', '#808080']; // color_bucket[0]: male; color_bucket[1]: female; color_bucket[2]: unspecified
+    color_bucket = ['#000099', '#990099', '#808080']
+    genders = ["Male", "Female", "Unspecified"]; // color_bucket[0]: male; color_bucket[1]: female; color_bucket[2]: unspecified
   
   var selections = ["Funding", "Views"], 
     j = 0;  // Choose "Funding" as default
@@ -432,8 +433,26 @@ $(document).ready(function() {
         .ease("linear");
     });
   }
+  var legend = svg.selectAll(".legend")
+    .data(genders).enter().append("g")
+    .attr("class", "legend")
+    .attr("transform", function(d, i) { return "translate(0," + i*20 + ")"; });
+    
+  legend.append("rect")
+    .attr("x", width - 18)
+    .attr("width", 18)
+    .attr("height", 18)
+    .style("fill", color_bucket);
+  
+  legend.append("text")
+    .attr("x", width - 24)
+    .attr("y", 9)
+    .attr("dy", ".35em")
+    .style("text-anchor", "end")
+    .text(function(d) { return d; });
+    
   apply_bars(0);
-  console.log("ADD ME!");
+  console.log("ADD ME!!!!");
   });
 });
   
