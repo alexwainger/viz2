@@ -458,11 +458,12 @@ $(document).ready(function() {
       .attr("transform", function() { return "translate(0," + i*20 + ")"; });
   }
   
-  svg.selectAll(".legend").each(function(d, i) { 
+  
+  svg.selectAll(".legend").each(function(d, i) {
       d3.select(this).append("rect")
         .attr("x", width - 18)
-        .attr("width", 100%)
-        .attr("height", 100%)
+        .attr("width", 100)
+        .attr("height", 100)
         .style("fill", "white");
         
       d3.select(this).append("rect")
