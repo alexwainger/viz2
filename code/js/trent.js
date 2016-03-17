@@ -469,6 +469,7 @@ $(document).ready(function() {
         
       d3.select(this).append("rect")
         .attr("x", width)
+        .attr("y", 9)
         .attr("width", 18)
         .attr("height", 18)
         .style("fill", function() { return color_bucket[i]; });
