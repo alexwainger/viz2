@@ -50,12 +50,6 @@ $(document).ready(function() {
   yAxis.scale(y);
   
     //.tickFormat(function(d) {return "$" + d; });
-  var tip = d3.tip()
-  .attr('class', 'd3-tip')
-  .offset([-10, 0])
-  .html(function(d) {
-    return "<strong>Amount: </strong> <span style='color:red'> $" + 10 + "</span>";
-  });
   
   var svg = d3.select("#trent").append("svg")
     .attr("width", width + margin.left + margin.right)
@@ -83,12 +77,11 @@ $(document).ready(function() {
     .attr("text-anchor", "middle")
     .attr("transform", "translate(-65," + height/2 + ")rotate(-90)")
     .text("Amount of Funding (dollars)");
-
-  
-  
-  svg.call(tip);
-  //console.log(choice);
-  
+    
+  var div = d3.select("body").append("div")
+    .attr("class", "tooltip")
+    .style("opacity", 0);
+    
   var m_funding = [0, 0, 0, 0, 0];
   var f_funding = [0, 0, 0, 0, 0];
   var u_funding = [0, 0, 0, 0, 0];
@@ -377,11 +370,11 @@ $(document).ready(function() {
         .attr("class", "male")
         .on("mouseover", function() {
           d3.select(this).style("fill", function() { return alt_color_bucket[0]; });
-          tip.show;
+          div.transition().duration(200).style("opacity", .9);
         })
         .on("mouseout",  function() {
           d3.select(this).style("fill", function() { return color_bucket[0]; });
-          tip.hide;
+          div.transition().duration(200).style("opacity", 0);
         });
         
     }
@@ -492,7 +485,7 @@ $(document).ready(function() {
     .text(function(d) { return d; });*/
     
   apply_bars(0);
-  console.log("!");
+  console.log("W");
   });
 });
   
