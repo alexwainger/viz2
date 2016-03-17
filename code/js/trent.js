@@ -103,7 +103,6 @@ $(document).ready(function() {
           }
         }
         else{
-          view_check = view_check+1;
           if(d.gender === "M") {
             m_views[category_index] = m_views[category_index] + 1;
           }
