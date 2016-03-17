@@ -34,7 +34,7 @@ div.xiaoyi_hoverinfo {
 	padding-left: 455px;
 	padding-top: 20px;
 }
-#trent div.tooltip {
+#trent .tooltip {
 	position: absolute
 	text-align: center;
 	width: 60px;
