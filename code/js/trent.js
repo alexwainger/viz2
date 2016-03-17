@@ -455,11 +455,11 @@ $(document).ready(function() {
   for(var i = 0; i < 3; i++) {
     svg.append("g")
       .attr("class", "legend")
-      .attr("transform", function() { return "translate(0," + i*20 + ")"; })
         .append("rect")
         .attr("width", 100)
         .attr("height", 100)
-        .style("fill", "white");
+        .style("fill", "white")
+        .attr("transform", function() { return "translate(0," + i*20 + ")"; });
   }
   
   
@@ -472,7 +472,7 @@ $(document).ready(function() {
         .style("fill", function() { return color_bucket[i]; });
         
       d3.select(this).append("text")
-        .attr("x", width - 24)
+        .attr("x", width)
         .attr("y", 9)
         .attr("dy", ".35em")
         .style("text-anchor", "end")
@@ -494,7 +494,7 @@ $(document).ready(function() {
     .text(function(d) { return d; });*/
     
   apply_bars(0);
-  console.log("OE");
+  console.log("E");
   });
 });
   
