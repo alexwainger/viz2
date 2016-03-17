@@ -46,7 +46,7 @@ $(document).ready(function() {
     .orient("left")
     .innerTickSize(-width);
   
-  y.domain([70000, 80000]);
+  y.domain([70000, 78000]);
   yAxis.scale(y);
   
     //.tickFormat(function(d) {return "$" + d; });
@@ -307,7 +307,7 @@ $(document).ready(function() {
   }
   
   function rescale_views() {
-    y.domain([2500, 3000]);
+    y.domain([2600, 2800]);
     yAxis.scale(y);
    
     svg.select(".y_axis")
@@ -320,7 +320,7 @@ $(document).ready(function() {
   }
   
   function rescale_funding() {
-    y.domain([70000, 80000]);
+    y.domain([70000, 78000]);
     yAxis.scale(y);
     svg.select(".y_axis")
       .transition().duration(1500).ease("sin-in-out")
@@ -496,7 +496,7 @@ $(document).ready(function() {
     .text(function(d) { return d; });*/
     
   apply_bars(0);
-  console.log("DONE!");
+  console.log("DONE!!");
   });
 });
   
