@@ -1,6 +1,6 @@
 Bar Chart:
-Author: Trent Yee
-Login: tmyee
+Author: Trent Yee,
+Login: tmyee,
 Date: 3/17/16
 
 By toggling the radio buttons labeled “Funding” and “Views”, the bar chart user can alternate between a bar chart with the amount of funding and a bar chart showing the number of views. If you click either the "Funding" or “Views” radio buttons, the y-axis will adjust its scale and the each bar will adjust its height to show the amount of funding/number of views for each category and gender. Additionally, hovering over any bar on the chart changes the color of that bar.
