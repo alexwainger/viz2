@@ -77,10 +77,7 @@ $(document).ready(function() {
     .attr("text-anchor", "middle")
     .attr("transform", "translate(-65," + height/2 + ")rotate(-90)")
     .text("Amount of Funding (dollars)");
-    
-  var div = d3.select("body").append("div")
-    .attr("class", "tooltip")
-    .style("opacity", 0);
+  
     
   var m_funding = [0, 0, 0, 0, 0];
   var f_funding = [0, 0, 0, 0, 0];
@@ -370,11 +367,9 @@ $(document).ready(function() {
         .attr("class", "male")
         .on("mouseover", function() {
           d3.select(this).style("fill", function() { return alt_color_bucket[0]; });
-          div.transition().duration(200).style("opacity", .9);
         })
         .on("mouseout",  function() {
           d3.select(this).style("fill", function() { return color_bucket[0]; });
-          div.transition().duration(200).style("opacity", 0);
         });
         
     }
