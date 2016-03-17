@@ -330,7 +330,7 @@ $(document).ready(function() {
 
     
     
-    svg.select(".yaxis_label")
+    svg.select(".yaxis_label").transition().duration(800)
       .text("Amount of Funding (dollars)");
   }
   
