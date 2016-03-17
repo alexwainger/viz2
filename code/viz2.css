@@ -53,4 +53,14 @@ rect.bordered {
 
 #jing-event-picker {
     margin-left: 15%;
+    margin-bottom: 20px;
+}
+
+#jing p {
+    width:860px;
+    margin-left: 100px;
+}
+
+#jing h1 {
+    margin-left: 100px;
 }

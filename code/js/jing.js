@@ -1,6 +1,9 @@
 $(document).ready(function () {
+    d3.select('#jing').append('h1').text("Views and Funds at Each Time Period in The Day");
+    d3.select('#jing').append('p').text("Author: Jing Wang; Login: jw12; Date: March 17, 2016");
+    
     var margin = {
-            top: 50,
+            top: 30,
             right: 0,
             bottom: 70,
             left: 100
@@ -88,7 +91,6 @@ $(document).ready(function () {
                     });
                 }
             }
-            console.log(dict);
 
             var lowerbound = d3.min(dict, function (d) {
                 return d.value;
@@ -218,4 +220,7 @@ $(document).ready(function () {
         .on("click", function (d) {
             heatmap(d);
         });
+    
+    d3.select('#jing').append('p').text("This is a heatmap showing you the number of viewing and funding actions at each hour for each category over one month. You can switch between displaying view events and fund events by clicking on the buttons. When you mouse over each grid, it will show the total number of actions in a month for the selected action.");
+    d3.select('#jing').append('p').text("The heat map shows that there are more views in the afternoon and at night, and people are more likely to fund a project in the evening. There are more views for sports projects after 8pm, and there are more people funding sports after 8 pm as well. However, there is no significant correlation between viewing and funding actions for other categories at a certain time. - Author: Jing Wang; Login: jw12; Date: March 17, 2016");
 });
