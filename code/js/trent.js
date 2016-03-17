@@ -458,8 +458,8 @@ $(document).ready(function() {
       .attr("transform", function() { return "translate(0," + i*20 + ")"; })
         .append("rect")
         .attr("width", 100)
-        .attr("height", 100)
-        .attr("x", 800)
+        .attr("height", 18)
+        .attr("x", 850)
         .style("fill", "white");
         
   }
