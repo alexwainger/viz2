@@ -43,7 +43,8 @@ $(document).ready(function() {
     
   var yAxis = d3.svg.axis()
     .scale(y)
-    .orient("left");
+    .orient("left")
+    .tickSize([width, 5]);
   
   y.domain([70000, 80000]);
   yAxis.scale(y);
@@ -456,7 +457,7 @@ $(document).ready(function() {
     .attr("x", width - 18)
     .attr("width", 18)
     .attr("height", 18)
-    .style("fill", color_bucket);
+    .style("fill", function(i) { return color_bucket[i]; });
   
   legend.append("text")
     .attr("x", width - 24)
@@ -466,7 +467,7 @@ $(document).ready(function() {
     .text(function(d) { return d; });
     
   apply_bars(0);
-  console.log("ADD M!!");
+  console.log("ADD!!");
   });
 });
   
