@@ -3,7 +3,7 @@ $(document).ready(function() {
     width = 960 - margin.left - margin.right,
     height = 430 - margin.top - margin.bottom,
     categories = ["Environment", "Games", "Fashion", "Technology", "Sports"],
-    color_bucket = ['#B00000', '#990099', '#0000CC'],
+    color_bucket = ['#E00000', '#990099', '#0000CC'],
     alt_color_bucket = ['#FF3399', '#9900CC', '#0000FF'],
     genders = ["Male", "Female", "Unspecified"]; // color_bucket[0]: male; color_bucket[1]: female; color_bucket[2]: unspecified
   
