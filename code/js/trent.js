@@ -470,7 +470,8 @@ $(document).ready(function() {
         .attr("x", width - 18)
         .attr("width", 18)
         .attr("height", 18)
-        .style("fill", function() { return color_bucket[i]; })
+        .style("fill", function() { return color_bucket[i]; });
+        
       d3.select(this).append("text")
         .attr("x", width - 24)
         .attr("y", 9)
