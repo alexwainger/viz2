@@ -33,8 +33,7 @@ $(document).ready(function() {
     
   var y = d3.scale.linear()
     .range([height, 0]);
-    //.domain([70000, 80000]);
-    
+
   var x0 = d3.scale.ordinal();
   
   var xAxis = d3.svg.axis()
@@ -48,8 +47,6 @@ $(document).ready(function() {
   
   y.domain([70000, 78000]);
   yAxis.scale(y);
-  
-    //.tickFormat(function(d) {return "$" + d; });
   
   var svg = d3.select("#trent").append("svg")
     .attr("width", width + margin.left + margin.right)
@@ -78,58 +75,43 @@ $(document).ready(function() {
     .attr("transform", "translate(-65," + height/2 + ")rotate(-90)")
     .text("Amount of Funding (dollars)");
   
-  var div = d3.select("body").append("div")   
-    .attr("class", "tooltip")               
-    .style("opacity", 0);
   var m_funding = [0, 0, 0, 0, 0];
   var f_funding = [0, 0, 0, 0, 0];
   var u_funding = [0, 0, 0, 0, 0];
   var m_views = [0, 0, 0, 0, 0];
   var f_views = [0, 0, 0, 0, 0];
   var u_views = [0, 0, 0, 0, 0];
-  var entries = 0;
-  var view_check = 0;
-  var checker = 0;
+ 
   d3.json("https://raw.githubusercontent.com/alexwainger/viz2/master/code/data/data.json", function(error, d) {
     if (error) throw error;
     var data = d.data;
-   
     
     data.forEach(function(d) {
-      
       var category_index = -1;
-      
       if(d.category === "Environment") {
         
         category_index = 0;
         if(d.event_name === "Fund Project"){
-          entries = entries + 1;
           if(d.gender === "M") {
             m_funding[category_index] = m_funding[category_index] + d.amount;
-            checker = checker + 1;
           }
           else if(d.gender === "F") {
             f_funding[category_index] = f_funding[category_index] + d.amount;
-            checker = checker + 1;
           }
           else {
             u_funding[category_index] = f_funding[category_index] + d.amount;
-            checker = checker + 1;
           }
         }
         else{
           view_check = view_check+1;
           if(d.gender === "M") {
             m_views[category_index] = m_views[category_index] + 1;
-            checker = checker + 1;
           }
           else if(d.gender === "F") {
             f_views[category_index] = m_views[category_index] + 1;
-            checker = checker + 1;
           }
           else {
             u_views[category_index] = m_views[category_index] + 1;
-            checker = checker + 1;
           }
         }
       }
@@ -137,154 +119,105 @@ $(document).ready(function() {
       else if(d.category === "Games") {
         category_index = 1;
         if(d.event_name === "Fund Project"){
-          entries = entries + 1;
           if(d.gender === "M") {
             m_funding[category_index] = m_funding[category_index] + d.amount;
-            checker = checker + 1;
           }
           else if(d.gender === "F") {
             f_funding[category_index] = f_funding[category_index] + d.amount;
-            checker = checker + 1;
           }
           else {
             u_funding[category_index] = f_funding[category_index] + d.amount;
-            checker = checker + 1;
           }
         }
         else{
-          view_check = view_check+1;
           if(d.gender === "M") {
             m_views[category_index] = m_views[category_index] + 1;
-            checker = checker + 1;
           }
           else if(d.gender === "F") {
             f_views[category_index] = m_views[category_index] + 1;
-            checker = checker + 1;
           }
           else {
             u_views[category_index] = m_views[category_index] + 1;
-            checker = checker + 1;
           }
         }
       }
       else if(d.category === "Fashion") {
         category_index = 2;
         if(d.event_name === "Fund Project"){
-          entries = entries + 1;
           if(d.gender === "M") {
             m_funding[category_index] = m_funding[category_index] + d.amount;
-            checker = checker + 1;
           }
           else if(d.gender === "F") {
             f_funding[category_index] = f_funding[category_index] + d.amount;
-            checker = checker + 1;
           }
           else {
             u_funding[category_index] = f_funding[category_index] + d.amount;
-            checker = checker + 1;
           }
         }
         else{
-          view_check = view_check+1;
           if(d.gender === "M") {
             m_views[category_index] = m_views[category_index] + 1;
-            checker = checker + 1;
           }
           else if(d.gender === "F") {
             f_views[category_index] = m_views[category_index] + 1;
-            checker = checker + 1;
           }
           else {
             u_views[category_index] = m_views[category_index] + 1;
-            checker = checker + 1;
           }
         }
       }
       else if(d.category === "Technology") {
-        
         category_index = 3;
         if(d.event_name === "Fund Project"){
-          entries = entries + 1;
           if(d.gender === "M") {
             m_funding[category_index] = m_funding[category_index] + d.amount;
-            checker = checker + 1;
           }
           else if(d.gender === "F") {
             f_funding[category_index] = f_funding[category_index] + d.amount;
-            checker = checker + 1;
           }
           else {
             u_funding[category_index] = f_funding[category_index] + d.amount;
-            checker = checker + 1;
           }
         }
         else{
-          view_check = view_check+1;
           if(d.gender === "M") {
             m_views[category_index] = m_views[category_index] + 1;
-            checker = checker + 1;
           }
           else if(d.gender === "F") {
             f_views[category_index] = m_views[category_index] + 1;
-            checker = checker + 1;
           }
           else {
             u_views[category_index] = m_views[category_index] + 1;
-            checker = checker + 1;
           }
         }
       }
       else if(d.category === "Sports") {
         category_index = 4;
         if(d.event_name === "Fund Project"){
-          entries = entries + 1;
           if(d.gender === "M") {
             m_funding[category_index] = m_funding[category_index] + d.amount;
-            checker = checker + 1;
           }
           else if(d.gender === "F") {
             f_funding[category_index] = f_funding[category_index] + d.amount;
-            checker = checker + 1;
           }
           else {
             u_funding[category_index] = f_funding[category_index] + d.amount;
-            checker = checker + 1;
           }
         }
         else{
-          view_check = view_check+1;
           if(d.gender === "M") {
             m_views[category_index] = m_views[category_index] + 1;
-            checker = checker + 1;
           }
           else if(d.gender === "F") {
             f_views[category_index] = m_views[category_index] + 1;
-            checker = checker + 1;
           }
           else {
             u_views[category_index] = m_views[category_index] + 1;
-            checker = checker + 1;
           }
         }
       }
     });
-    /*
-    console.log("~~~FUNDING!~~~");
-    console.log(m_funding);
-    console.log(f_funding);
-    console.log(u_funding);
-    console.log("~~~VIEWS~~~");
-    console.log(m_views);
-    console.log(f_views);
-    console.log(u_views);
-    
-    console.log("~~~CHECK~~~");
-    console.log(entries);
-    console.log("~~~VIEWS~~~");
-    console.log(view_check);
-    console.log("~~~CHECKER~~~");
-    console.log(checker);
-    */
+  
   d3.selectAll("input").on("change", change);
  
   function change() {
@@ -297,12 +230,6 @@ $(document).ready(function() {
     
     else {
       rescale_views();
-      /*svg.select(".male")
-        .transition()
-        .duration(1500)
-        .attr("height", function() { return (height - y(2650)) + "px"; })
-        .attr("y", function() { return y(2650) + "px"; })
-        .ease("linear");*/
       transition(value);
     }
   }
@@ -317,38 +244,21 @@ $(document).ready(function() {
     
     svg.select(".yaxis_label")
       .text("Number of Views");
-      
   }
   
   function rescale_funding() {
     y.domain([70000, 78000]);
     yAxis.scale(y);
+    
     svg.select(".y_axis")
       .transition().duration(1500).ease("sin-in-out")
-      .call(yAxis);;
-
-    
-    
+      .call(yAxis);
+      
     svg.select(".yaxis_label").transition().duration(800)
       .text("Amount of Funding (dollars)");
   }
-  
-  /*var state = svg.selectAll(".category")
-    .data(categories)
-    .enter().append("g")
-    .attr("class", "category")
-    .attr("transform", function(d) { return "translate(" + x(d) + ",0)";});*/
- 
-  /*svg.append("rect")
-    .attr("width", 18)
-    .attr("x", 0)
-    .attr("y", 0)
-    .attr("height", y(5000))
-    .style("fill", function(d) { return color_bucket[0]; });*/
-    
     
   function apply_bars(check) {  
-    
     if(check == 0) {
       var m = m_funding;
       var f = f_funding;
@@ -360,6 +270,7 @@ $(document).ready(function() {
       var f = f_views;
       var u = u_views;
     }
+    
     for(var i = 0; i < 5; i++) {
       svg.append("rect")
         .attr("width", "30px")
@@ -370,17 +281,10 @@ $(document).ready(function() {
         .attr("class", "male")
         .on("mouseover", function() {
           d3.select(this).style("fill", function() { return alt_color_bucket[0]; });
-           div.transition()        
-                .duration(200)      
-                .style("opacity", .9);    
         })
         .on("mouseout",  function() {
           d3.select(this).style("fill", function() { return color_bucket[0]; });
-           div.transition()        
-                .duration(200)      
-                .style("opacity", 0);    
         });
-        
     }
   
     for(var i = 0; i < 5; i++) {
@@ -415,8 +319,6 @@ $(document).ready(function() {
         });
     }
   }
-  
-  //console.log("YO");
   
   function transition(check) {
     if(check == 0) {
@@ -462,12 +364,9 @@ $(document).ready(function() {
         .attr("height", 20)
         .attr("x", 780)
         .style("fill", "white");
-        
   }
   
-  
   svg.selectAll(".legend").each(function(d, i) {
-        
       d3.select(this).append("rect")
         .attr("x", width - 18)
         .attr("width", 18)
@@ -480,11 +379,10 @@ $(document).ready(function() {
         .attr("dy", ".35em")
         .style("text-anchor", "end")
         .text(function() {  return genders[i]; });
-      //console.log(this);
   });
 
   apply_bars(0);
-  console.log("FINISHED!!!");
+  console.log("FINISHED");
   });
 });
   
