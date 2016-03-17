@@ -497,7 +497,7 @@ $(document).ready(function() {
     .text(function(d) { return d; });*/
     
   apply_bars(0);
-  console.log("E");
+  console.log("Ep");
   });
 });
   
