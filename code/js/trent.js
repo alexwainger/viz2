@@ -452,12 +452,22 @@ $(document).ready(function() {
     .data(genders).enter().append("g")
     .attr("class", "legend")
     .attr("transform", function(d, i) { return "translate(0," + i*20 + ")"; });
-    
-  legend.append("rect")
+  
+  for(var i = 0; i < 3; i++) {
+    svg.selectAll(".legend").each(function(d, i) { 
+       d3.select(this).append("rect")
+          .attr("x", width - 18)
+          .attr("width", 18)
+          .attr("height", 18)
+          .style("fill", function(i) { return color_bucket[i]; });
+     });
+  }
+  
+  /*legend.append("rect")
     .attr("x", width - 18)
     .attr("width", 18)
     .attr("height", 18)
-    .style("fill", function(i) { return color_bucket[i]; });
+    .style("fill", function(i) { return color_bucket[i]; });*/
   
   legend.append("text")
     .attr("x", width - 24)
