@@ -1,10 +1,10 @@
 $(document).ready(function() {
   var margin = {top: 25, right: 0, bottom: 100, left: 80},
-    width = 960 - margin.left - margin.right
-    height = 430 - margin.top - margin.bottom
-    categories = ["Environment", "Games", "Fashion", "Technology", "Sports"]
-    color_bucket = ['#FF3333', '#990099', '#0000CC']
-    alt_color_bucket = ['#FF6633', '#9900CC', '#0000FF']
+    width = 960 - margin.left - margin.right,
+    height = 430 - margin.top - margin.bottom,
+    categories = ["Environment", "Games", "Fashion", "Technology", "Sports"],
+    color_bucket = ['#FF3333', '#990099', '#0000CC'],
+    alt_color_bucket = ['#FF6633', '#9900CC', '#0000FF'],
     genders = ["Male", "Female", "Unspecified"]; // color_bucket[0]: male; color_bucket[1]: female; color_bucket[2]: unspecified
   
   var selections = ["Funding", "Views"], 
@@ -465,7 +465,7 @@ $(document).ready(function() {
         .attr("y", 9)
         .attr("dy", ".35em")
         .style("text-anchor", "end")
-        .text(function(d) { return d; });
+        .text(function() {  return genders[i]; });
       console.log(this);
   });
   
