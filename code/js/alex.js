@@ -1,6 +1,6 @@
 $(document).ready(function() {
-    var canvas_width = 500;
-    var canvas_height = 300;
+    var canvas_width = 550;
+    var canvas_height = 350;
     var margin = 30;
     var radius = 4;
     var grouping_types = ['category','age','gender','city','state','zip_code','marital_status','device'];
@@ -72,6 +72,15 @@ $(document).ready(function() {
 
     function setup_canvas(data_points) {
 
+        alexdiv = d3.select("#alex");
+        alexdiv.append("div").append("select").style("margin-left", "30px")
+            .selectAll("option")
+            .data(grouping_types)
+            .enter()
+            .append("option")
+            .attr("value", function(d) { return d; })
+            .text(function(d) { return d;})
+
         var xValue = function(d) { return d['view_count']; };
         var yValue = function(d) { return d['conversion_rate']; };
 
@@ -86,7 +95,7 @@ $(document).ready(function() {
         var xAxis = d3.svg.axis().scale(xScale).orient("bottom").ticks(5);
         var yAxis = d3.svg.axis().scale(yScale).orient("left").ticks(5);
         
-        var svg = d3.select("#alex").append("svg").attr("width", canvas_width).attr("height", canvas_height);
+        var svg = alexdiv.append("svg").attr("width", canvas_width).attr("height", canvas_height);
 
         svg.selectAll("circle")
             .data(data_points)
@@ -106,13 +115,5 @@ $(document).ready(function() {
             .attr("class", "y axis")
             .attr("transform", "translate(" + margin + ",0)")
             .call(yAxis);
-
-        d3.select("#alex").append("select")
-            .selectAll("option")
-            .data(grouping_types)
-            .enter()
-            .append("option")
-            .attr("value", function(d) { return d; })
-            .text(function(d) { return d;}); 
     };
 });
