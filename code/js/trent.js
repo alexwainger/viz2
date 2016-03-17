@@ -457,8 +457,8 @@ $(document).ready(function() {
       .attr("class", "legend")
       .attr("transform", function() { return "translate(0," + i*20 + ")"; })
         .append("rect")
-        .attr("width", "100%")
-        .attr("height", "100%")
+        .attr("width", 100)
+        .attr("height", 100)
         .style("fill", "white");
   }
   
