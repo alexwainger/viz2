@@ -306,7 +306,6 @@ $(document).ready(function() {
         .ease("linear");*/
         transition(value);
     }
-    
   }
   
   function rescale_views() {
