@@ -455,12 +455,12 @@ $(document).ready(function() {
   for(var i = 0; i < 3; i++) {
     svg.append("g")
       .attr("class", "legend")
-      .attr("transform", function() { return "translate(0," + i*20 + ")"; });
-        /*.append("rect")
+      .attr("transform", function() { return "translate(0," + i*20 + ")"; })
+        .append("rect")
         .attr("width", 100)
         .attr("height", 100)
         .style("fill", "white")
-        .attr("transform", function() { return "translate(0," + i*20 + ")"; });*/
+        .attr("transform", function() { return "translate(0," + i*20 + ")"; });
         
   }
   
@@ -468,8 +468,7 @@ $(document).ready(function() {
   svg.selectAll(".legend").each(function(d, i) {
         
       d3.select(this).append("rect")
-        .attr("x", width -24)
-        .attr("y", 9)
+        .attr("x", width - 18)
         .attr("width", 18)
         .attr("height", 18)
         .style("fill", function() { return color_bucket[i]; });
