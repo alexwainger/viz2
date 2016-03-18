@@ -37,8 +37,22 @@
         <script src="js/xiaoyi.js"></script> <!-- XiaoYi's visualization -->
     </head>
     <body>
-        <h1>VIZ2 - Alex Wainger(awainger), Trent Yee(tmyee), Jing Wang(jw12), Siyi Zhang(sz22), Xiaoyi Mao(xmao) - March 17th, 2016</h1>
+        <h1>VIZ2 - Alex Wainger (awainger), Trent Yee (tmyee), Jing Wang (jw12), Siyi Zhang (sz22), Xiaoyi Mao (xmao)</h1>
+        <hr><hr>
+        <h2>Views vs. Conversion Rate Scatter Plot</h2>
+        <p>Author: Alex Wainger, Login: awainger</p>
+        <p>This visualization aims to illustrate the conversion rate and number of views, grouped by different pieces of information.
+        For example, by selecting the "city" option from the drop down menu, you can see each city in the data set plotted with
+        view counts on the X axis and conversion rate (fund events / view events) on the Y axis. The X-axis uses a power scale of .1
+        so that the data at the smaller end of the spectrum is more spaced out.</p>
+        <p>There is also an "average conversion rate" line drawn, which shows the average conversion rate for the entire dataset (around 70%)
+        and serves as a reference to compare the data points with. A tooltip will also appear if you hover over a data point, which gives you
+        the name of the group, the view count, and the conversion rate, rounded to three decimal points.</p>
+        <p>Bootloader should be able to use this visualization to identify which demographics view the most/fewest projects, and which demographics
+        turn a view into a fund most frequently. This should help them focus their marketing strategies on taking advantage of their most productive
+        demographics, or trying to reach their underserved ones.</p>
         <div class="viz" id="alex"></div>
+        
         <hr>
         <div class="viz" id="trent"></div>
         <hr>
