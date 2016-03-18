@@ -1,6 +1,8 @@
 $(document).ready(function() {
 	"use strict";	
-
+	d3.select('#xiaoyi').append('h1').text("Fund for each category in each states");
+  d3.select('#xiaoyi').append('p').text("Author: Xiaoyi Mao; Login: xmao; Date: March 17, 2016");
+    
 	d3.json("../data/data.json", function(d) {
 		var allstates = {}
 		var data = d.data;
@@ -79,5 +81,8 @@ $(document).ready(function() {
 		map.labels();
 		map.legend();
 	});
-
+	d3.select('#xiaoyi').append('p').text("This Map shows the most funded category in each state by showing the corresponding color."+
+						"When the mouse hovers over each state, a detailed break down of the percentages of each category will be shown in a popup div");
+	d3.select("#xiaoyi").append('p').text("From this chart, the app can know more about the distribution of funding and what people are more interested in regional wide.");
+	d3.select("#xiaoyi").append('p').text("Credit: I imported an external library of US map from http://datamaps.github.io");
 }) 

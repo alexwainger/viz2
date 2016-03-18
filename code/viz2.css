@@ -1,13 +1,16 @@
 div .viz {
     margin-bottom: 20px;
     margin-top: 20px;
+    margin-left: 100px;
 }
 
 #xiaoyi {
     float: left;
     height: 500px;
-    width: 1000px;
+    width: 800px;
     position: relative;
+    margin-left: 100px;
+    margin-right: 150px;
 }
 
 div.xiaoyi_hoverinfo {
