@@ -4,15 +4,30 @@ $(document).ready(function() {
     var margin = 30;
     var radius = 4;
     var grouping_types = ['category','age','gender','city','state','zip_code','marital_status','device'];
-    var curr_group_type = 'age';
+    var curr_group_type = 'category';
     var data = [];
     var average_conversion_rate = 0;
 
+    var xValue = function(d) { return d['view_count']; };
+    var yValue = function(d) { return d['conversion_rate']; };
+
+    var xScale = d3.scale.pow().exponent(.1);
+    var yScale = d3.scale.linear()
+        .domain([0, 1])
+        .range([canvas_height - margin, margin]);
+
+    var xAxis = d3.svg.axis();
+    var yAxis = d3.svg.axis()
+        .scale(yScale)
+        .orient("left")
+        .ticks(5);
+
     d3.json("../data/data.json", function(json) {
         data = json.data;
+        average_conversion_rate = calc_average_conversion_rate();
         data_points = group_data();
+        setup_selectmenu();
         setup_canvas(data_points);
-        // TODO Calculate average conversion rate
     });
 
     function calc_average_conversion_rate() { 
@@ -23,6 +38,104 @@ $(document).ready(function() {
         return counts['Fund Project'] / counts['View Project'];
     };
 
+    function redraw_datapoints() {
+        curr_group_type = $(this).val();
+        new_data_points = group_data();
+        
+        setup_x_axis(new_data_points);
+
+        d3.select(".x.axis").transition().duration(1000).call(xAxis);
+
+        // Remove old circles
+        d3.select("#data-group")
+            .selectAll("circle")
+            .transition()
+            .duration(1000)
+            .style("opacity", 0)
+            .remove();
+
+        d3.select("#alexsvg").append("g").attr("id", "new-data-group")
+            .selectAll("circle")
+            .data(new_data_points)
+            .enter()
+            .append("circle")
+            .attr("cx", function(d) { return xScale(d['view_count']) })
+            .attr("cy", function(d) { return yScale(d['conversion_rate']) })
+            .attr("r", radius)
+            .attr("fill", "red")
+            .style("opacity", 0)
+            .transition()
+            .duration(1000)
+            .style("opacity", 1);
+
+       d3.select("#data-group").transition().delay(1000).remove();
+       d3.select("#new-data-group").attr("id", "data-group");
+    };
+
+    function setup_selectmenu() {
+        d3.select("#alex").append("div").append("select").attr("id", "selectmenu").style("margin-left", "30px")
+            .selectAll("option")
+            .data(grouping_types)
+            .enter()
+            .append("option")
+            .attr("value", function(d) { return d; })
+            .text(function(d) { return d;});
+       
+         $("#selectmenu").on("change", redraw_datapoints);
+    };
+
+    function setup_x_axis(data_points) {
+        xScale.domain([d3.min(data_points, xValue) - 5, d3.max(data_points, xValue) + 5])
+            .range([margin, canvas_width - margin * 2]);
+
+        xAxis.scale(xScale).orient("bottom").ticks(5);
+    };
+
+    function setup_canvas(data_points) {
+
+        setup_x_axis(data_points);
+
+        var svg = d3.select("#alex").append("svg")
+            .attr("id", "alexsvg")
+            .attr("width", canvas_width)
+            .attr("height", canvas_height);
+
+        svg.append("g").attr("id", "data-group").selectAll("circle")
+            .data(data_points)
+            .enter()
+            .append("circle")
+            .attr("cx", function(d) { return xScale(d['view_count']) })
+            .attr("cy", function(d) { return yScale(d['conversion_rate']) })
+            .attr("r", radius)
+            .attr("fill", "red");
+
+        svg.append("g")
+            .attr("class", "x axis")
+            .attr("transform", "translate(0, " + (canvas_height - margin) + ")")
+            .call(xAxis)
+            .append("text")
+            .attr("class", "label")
+            .attr("x", canvas_width-60)
+            .attr("y", -6)
+            .attr("text-anchor", "end")
+            .text("Event Views");
+
+        svg.append("g")
+            .attr("class", "y axis")
+            .attr("transform", "translate(" + margin + ",0)")
+            .call(yAxis)
+            .append("text")
+            .attr("class","label")
+            .attr("transform", "rotate(-90)")
+            .attr("y", 12)
+            .attr("x", -10)
+            .style("text-anchor", "end")
+            .text("Conversion Rate");
+
+
+
+    };
+    
     function group_data() {
         view_counts = {};
         fund_counts = {};
@@ -70,50 +183,4 @@ $(document).ready(function() {
         return data_points;
     };
 
-    function setup_canvas(data_points) {
-
-        alexdiv = d3.select("#alex");
-        alexdiv.append("div").append("select").style("margin-left", "30px")
-            .selectAll("option")
-            .data(grouping_types)
-            .enter()
-            .append("option")
-            .attr("value", function(d) { return d; })
-            .text(function(d) { return d;})
-
-        var xValue = function(d) { return d['view_count']; };
-        var yValue = function(d) { return d['conversion_rate']; };
-
-        var xScale = d3.scale.linear()
-            .domain([d3.min(data_points, xValue) - 5, d3.max(data_points, xValue) + 5])
-            .range([margin, canvas_width - margin * 2]);
-        
-        var yScale = d3.scale.linear()
-            .domain([0, 1])
-            .range([canvas_height - margin, margin]);
-
-        var xAxis = d3.svg.axis().scale(xScale).orient("bottom").ticks(5);
-        var yAxis = d3.svg.axis().scale(yScale).orient("left").ticks(5);
-        
-        var svg = alexdiv.append("svg").attr("width", canvas_width).attr("height", canvas_height);
-
-        svg.selectAll("circle")
-            .data(data_points)
-            .enter()
-            .append("circle")
-            .attr("cx", function(d) { return xScale(d['view_count']) })
-            .attr("cy", function(d) { return yScale(d['conversion_rate']) })
-            .attr("r", radius)
-            .attr("fill", "red");
-
-        svg.append("g")
-            .attr("class", "x axis")
-            .attr("transform", "translate(0, " + (canvas_height - margin) + ")")
-            .call(xAxis);
-
-        svg.append("g")
-            .attr("class", "y axis")
-            .attr("transform", "translate(" + margin + ",0)")
-            .call(yAxis);
-    };
 });
