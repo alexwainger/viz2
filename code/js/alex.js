@@ -6,6 +6,7 @@ $(document).ready(function() {
     var grouping_types = ['category','age','gender','city','state','zip_code','marital_status','device'];
     var curr_group_type = 'category';
     var data = [];
+    var data_points = d3.map();
     var average_conversion_rate = 0;
 
     var xValue = function(d) { return d['view_count']; };
@@ -22,12 +23,17 @@ $(document).ready(function() {
         .orient("left")
         .ticks(5);
 
+    var tooltip = d3.select("#alex")
+        .append("div")
+        .attr("class", "alextooltip")
+        .style("opacity", 0);
+
     d3.json("../data/data.json", function(json) {
         data = json.data;
         average_conversion_rate = calc_average_conversion_rate();
-        data_points = group_data();
+        group_data();
         setup_selectmenu();
-        setup_canvas(data_points);
+        setup_canvas();
     });
 
     function calc_average_conversion_rate() { 
@@ -40,9 +46,9 @@ $(document).ready(function() {
 
     function redraw_datapoints() {
         curr_group_type = $(this).val();
-        new_data_points = group_data();
+        group_data();
         
-        setup_x_axis(new_data_points);
+        setup_x_axis();
 
         d3.select(".x.axis").transition().duration(1000).call(xAxis);
 
@@ -56,11 +62,14 @@ $(document).ready(function() {
 
         d3.select("#alexsvg").append("g").attr("id", "new-data-group")
             .selectAll("circle")
-            .data(new_data_points)
+            .data(data_points.values())
             .enter()
             .append("circle")
             .attr("cx", function(d) { return xScale(d['view_count']) })
             .attr("cy", function(d) { return yScale(d['conversion_rate']) })
+            .attr("class", function(d) { return d['name'] })
+            .on("mouseover", handleMouseIn)
+            .on("mouseout", handleMouseOut)
             .attr("r", radius)
             .attr("fill", "red")
             .style("opacity", 0)
@@ -84,30 +93,22 @@ $(document).ready(function() {
          $("#selectmenu").on("change", redraw_datapoints);
     };
 
-    function setup_x_axis(data_points) {
-        xScale.domain([d3.min(data_points, xValue) - 5, d3.max(data_points, xValue) + 5])
+    function setup_x_axis() {
+        values = data_points.values();
+        xScale.domain([d3.min(values, xValue) - 5, d3.max(values, xValue) + 5])
             .range([margin, canvas_width - margin * 2]);
 
         xAxis.scale(xScale).orient("bottom").ticks(5);
     };
 
-    function setup_canvas(data_points) {
+    function setup_canvas() {
 
-        setup_x_axis(data_points);
+        setup_x_axis();
 
         var svg = d3.select("#alex").append("svg")
             .attr("id", "alexsvg")
             .attr("width", canvas_width)
             .attr("height", canvas_height);
-
-        svg.append("g").attr("id", "data-group").selectAll("circle")
-            .data(data_points)
-            .enter()
-            .append("circle")
-            .attr("cx", function(d) { return xScale(d['view_count']) })
-            .attr("cy", function(d) { return yScale(d['conversion_rate']) })
-            .attr("r", radius)
-            .attr("fill", "red");
 
         svg.append("g")
             .attr("class", "x axis")
@@ -115,7 +116,7 @@ $(document).ready(function() {
             .call(xAxis)
             .append("text")
             .attr("class", "label")
-            .attr("x", canvas_width-60)
+            .attr("x", canvas_width-margin * 2)
             .attr("y", -6)
             .attr("text-anchor", "end")
             .text("Event Views");
@@ -132,11 +133,38 @@ $(document).ready(function() {
             .style("text-anchor", "end")
             .text("Conversion Rate");
 
+        svg.append("line")
+            .attr({
+                x1: margin,
+                x2: canvas_width - margin * 2 -10,
+                y1: yScale(average_conversion_rate),
+                y2: yScale(average_conversion_rate),
+                stroke: "gray",
+                "stroke-width": "1"
+            });
+        
+        svg.append("text")
+            .attr("class", "label")
+            .text("Average rate")
+            .attr("x", canvas_width - margin*2-10)
+            .attr("y", yScale(average_conversion_rate)+5)
+            .attr("text-anchor", "start");
 
-
+        svg.append("g").attr("id", "data-group").selectAll("circle")
+            .data(data_points.values())
+            .enter()
+            .append("circle")
+            .attr("cx", function(d) { return xScale(d['view_count']) })
+            .attr("cy", function(d) { return yScale(d['conversion_rate']) })
+            .attr("class", function(d) { return d['name'] })
+            .on("mouseover", handleMouseIn)
+            .on("mouseout", handleMouseOut)
+            .attr("r", radius)
+            .attr("fill", "red");
     };
     
     function group_data() {
+        data_points = d3.map();
         view_counts = {};
         fund_counts = {};
         for (i=0; i<data.length; i++) {
@@ -160,10 +188,9 @@ $(document).ready(function() {
             }
         }
 
-        data_points = [];
         for (var property in view_counts) {
             if (view_counts.hasOwnProperty(property)) {
-                if (view_counts[property] > 30) {
+                if (view_counts[property] > 10) {
                     if (fund_counts.hasOwnProperty(property)) {
                         data_point = { 
                             'name': property,
@@ -175,12 +202,23 @@ $(document).ready(function() {
                             'view_count': view_counts[property],
                             'conversion_rate': 0.0 };
                     }
-                    data_points.push(data_point);
+                    data_points.set(property, data_point);
                 }
             }
         }
-
-        return data_points;
     };
 
+    function handleMouseOut() {
+        tooltip.transition().duration(500).style("opacity", 0);
+    };
+
+    function handleMouseIn() {
+        var name = d3.select(this).attr("class");
+        var point = data_points.get(name);
+        tooltip.html(point.name + "<br>Views: " + point.view_count + "<br>Rate: " + Number(point.conversion_rate).toFixed(3)).style("left", d3.event.pageX + "px").style("top", (d3.event.pageY -28) + "px");
+        tooltip.transition()
+            .duration(200)
+            .style("opacity", .9);
+
+    };
 });
