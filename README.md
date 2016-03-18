@@ -1,3 +1,7 @@
+TO RUN OUR VISUALIZATION:
+
+Run the python simple server from the project root, navigate to the code directory, where index.html lives. It should load automatically.
+
 Bar Chart:
 Author: Trent Yee,
 Login: tmyee,
